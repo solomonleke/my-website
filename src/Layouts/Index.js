@@ -18,7 +18,10 @@ export default function MainLayout({children, bgColor = "white"}) {
   return (
     <Container maxW={"container.xl"} >
     <HStack align={"flex-start"} pos={"relative"}>
+    <Box display={{base: "none", md: "block"}}>
     <NavBar/>
+    </Box>
+  
 
     <Box pl={{base: "0", md:"320px"}} w={"100%"}>
    

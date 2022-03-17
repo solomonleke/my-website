@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import MainLayout from '../Layouts/Index'
-import Request from '../Utils/Request'
-import Seo from '../Utils/Seo'
+import React, { useState } from "react";
+import MainLayout from "../Layouts/Index";
+import Request from "../Utils/Request";
+import Seo from "../Utils/Seo";
 import {
   Avatar,
   Box,
@@ -17,62 +17,389 @@ import {
   Text,
   Wrap,
   WrapItem,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+  useDisclosure,
+  background,
+  Progress,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  AccordionIcon,
+  Tabs, TabList, TabPanels, Tab, TabPanel
 } from "@chakra-ui/react";
+import { AiOutlineAlignLeft, AiFillBulb, AiOutlineBulb, AiOutlineWoman, AiOutlineDingding, AiOutlineVerified } from "react-icons/ai";
 import { FaCloudDownloadAlt } from "react-icons/fa";
+import NavBar from "../Layouts/NavBar";
+
+import LinkMenu from "../Components/LinkMenu";
+import { FaLinkedinIn, FaGithub, FaTwitter } from "react-icons/fa";
+import { BsFillBookFill, BsFillBrushFill, BsFlower1, BsFillPatchExclamationFill, BsFillPlugFill, BsFillPencilFill } from "react-icons/bs";
+import Header from "../Components/Header";
+import AboutCard from "../Components/Card";
+import HireCard from "../Components/Card2";
+import ServiceCard from "../Components/Card3";
+import ProgressBar from "../Components/ProgressBar";
+import EducationCard from "../Components/Card4";
+import ExperienceCard from "../Components/Card5";
+import EmpCard from "../Components/Card5.5";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
 
-  const download = ()=>{
-    setIsLoading(true)
+  const download = () => {
+    setIsLoading(true);
+  };
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [placement, setPlacement] = React.useState("left");
+  // const getApi = async ()=>{
+  //    const res = await new Request().get({url:"https://jsonplaceholder.typicode.com/posts"})
+  //     console.log(res)
+  // }
 
-  
-  
-  }
-    // const getApi = async ()=>{
-    //    const res = await new Request().get({url:"https://jsonplaceholder.typicode.com/posts"})
-    //     console.log(res)
-    // }
-    
   return (
-        <MainLayout>
-            <Seo title='Software Engineer' description='HomePage'/>
-            <Box display={{base: "block", md: "none"}}>buton</Box>
-            <Container maxW={"container.lg"}  id={"Home"} pt={"50px"} h={"100vh"}>
-           
-                <SimpleGrid columns={{base: 1, md: 2}} spacing={"12px"}>
-                    <Box mt={{base: "5px", md: "210px"}}>
-                        <Text fontFamily={"title"} fontSize={"53px"} lineHeight={"65px"}>Welcome <br/> To  My Portfolio</Text>
-                        <Text mt={"22px"}>I'm a Web developer that believes Web Sites should be of utmost simplicity, be responsive and user-friendly.</Text>
+    <MainLayout>
+      <Seo title="Software Engineer" description="HomePage" />
+      <Box
+        mt={"32px"}
+        display={{ base: "block", md: "none" }}
+        fontSize={"32px"}
+        position={"fixed"}
+        top={"0"}
+        bgColor={"white"}
+        opacity={"0.8"}
+      >
+        <AiOutlineAlignLeft onClick={onOpen} />
 
-                        <Button mt={"32px"} onClick={download} isLoading={isLoading} rightIcon={<FaCloudDownloadAlt />} color='red.red400' variant='outline'>
-                       Download CV
-                      </Button>
+        <Drawer
+          isOpen={isOpen}
+          placement={placement}
+          onClose={onClose}
+          bgColor={background}
+        >
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerHeader></DrawerHeader>
 
-                    </Box>
-                    <Box>
-                    <Image w={{base: "60%", md: "90%"}} src="about.png" />
-                     </Box>
-                </SimpleGrid>
-            </Container>
+            <DrawerBody>
+              <Box p="14px" textAlign={"center"} fontFamily={"body"}>
+                <Center mt={"32px"}>
+                  <Wrap>
+                    <WrapItem>
+                      <Avatar
+                        size="2xl"
+                        name="Solomon Adeleke"
+                        src="avater.jpeg"
+                      />{" "}
+                    </WrapItem>
+                  </Wrap>
+                </Center>
+                <Text mt={"28px"} fontSize={"20px"} fontFamily={"heading"}>
+                  Solomon Adeleke
+                </Text>
+                <Text mt={"3px"} fontSize={"15px"} fontFamily={"body"}>
+                  Software Engineer
+                </Text>
 
-            <Container maxW={"container.lg"}  id={"Home"} pt={"50px"}>
-                <SimpleGrid columns={{base: 1, md: 2}} spacing={"12px"}>
-                    <Box mt={{base: "5px", md: "210px"}}>
-                        <Text fontFamily={"title"} fontSize={"53px"} lineHeight={"65px"}>Welcome <br/> To  My Portfolio</Text>
-                        <Text mt={"22px"}>I'm a Web developer that believes Web Sites should be of utmost simplicity, be responsive and user-friendly.</Text>
+                <Stack mt={"32px"} spacing={"15px"}>
+                  <LinkMenu link="google.com" title="Home" />
+                  <LinkMenu link="google.com" title="About" />
+                  <LinkMenu link="google.com" title="Services" />
+                  <LinkMenu link="google.com" title="Skills" />
+                  <LinkMenu link="google.com" title="Education" />
+                  <LinkMenu link="google.com" title="Experience" />
+                  <LinkMenu link="google.com" title="Work" />
+                  <LinkMenu link="google.com" title="Contact" />
+                </Stack>
 
-                        <Button mt={"32px"} onClick={download} isLoading={isLoading} rightIcon={<FaCloudDownloadAlt />} color='red.red400' variant='outline'>
-                       Download CV
-                      </Button>
+                <Text fontSize={"12px"} mt={"32px"}>
+                  © Copyright ©2022 All rights reserved |
+                </Text>
 
-                    </Box>
-                    <Box>
-                    <Image w={{base: "60%", md: "90%"}} src="about.png" />
-                     </Box>
-                </SimpleGrid>
-            </Container>
+                <Text fontSize={"12px"} mt={"12px"}>
+                  This Portfolio is made with{" "}
+                  <i className="fa-solid fa-heart" /> by{" "}
+                  <Box as={"span"} color={"red.red500"}>
+                    solomonleke
+                  </Box>
+                </Text>
 
-        </MainLayout>
-  )
+                <Center mt={"12px"} pb={"62px"}>
+                  <HStack spacing={"12px"} cursor={"pointer"}>
+                    <LinkBox
+                      as={"a"}
+                      href="https://www.linkedin.com/in/solomon-adeleke-740426170/"
+                      target={"blank"}
+                    >
+
+                      <FaLinkedinIn />
+                    </LinkBox>
+                    <LinkBox
+                      as={"a"}
+                      href="https://github.com/solomonleke"
+                      target={"blank"}
+                    >
+
+                      <FaGithub />
+                    </LinkBox>
+                    <LinkBox
+                      as={"a"}
+                      href="https://twitter.com/moyin_s"
+                      target={"blank"}
+                    >
+                      <FaTwitter />
+                    </LinkBox>
+                  </HStack>
+                </Center>
+              </Box>
+            </DrawerBody>
+
+            <DrawerFooter>
+            </DrawerFooter>
+          </DrawerContent>
+        </Drawer>
+      </Box>
+      <Container as={"section"} maxW={"container.lg"} id={"Home"} pt={"50px"} mt={{ base: "10px" }} h={{ base: "auto", md: "100vh" }}>
+        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={"12px"}>
+          <Box mt={{ base: "5px", md: "210px" }}>
+            <Text fontFamily={"title"} fontSize={{ base: "35px", md: "53px" }} lineHeight={{ base: "40px", md: "65px" }}>
+              Welcome <br /> To My Portfolio
+            </Text>
+            <Text mt={"22px"}>
+              I'm a Web developer that believes Web Sites should be of utmost
+              simplicity, be responsive and user-friendly.
+            </Text>
+
+            <Button
+              mt={"32px"}
+              onClick={download}
+              isLoading={isLoading}
+              rightIcon={<FaCloudDownloadAlt />}
+              color="red.red400"
+              variant="outline"
+            >
+              Download CV
+            </Button>
+          </Box>
+          <Box>
+            <Image w={{ base: "100%", md: "90%" }} src="about.png" />
+          </Box>
+        </SimpleGrid>
+      </Container>
+
+      <Container as={"section"} maxW={"container.lg"} id={"About"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
+        <Header title="about us" head="who am i ?" />
+
+        <Text mt={"72px"}>
+          I'm a Software Engineer who lives by this code of perfection and simplicity, I strive to make sure that all my pieces of design get the response
+          "WOW". More so, the life of a designer is a life of fight. Fight against the ugliness. Just like a doctor fights against disease.
+          For me, the visual disease is what we have around, and what I try to do is cure it somehow with designs and apps I produce.
+          I love challenging my creativity by picking up complex designs and simplify them because I believe “Always Learning, Always Growing”
+        </Text>
+
+        <Text mt={"12px"}>I'm good with Html, Css, JavaScript, Laravel/Php, Node.js and React.js. I have work on projects like E-commerce
+          website, Logistics website, Delivery website to mention a
+          few using Laravel/Php, Next.js and React.js</Text>
+
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} mt="38px" spacing={"32px"}>
+          <AboutCard title="Software" color="#2c98f0" icon={<AiOutlineBulb />} />
+          <AboutCard title="Web Design" color="#ec5453" icon={<AiOutlineWoman />} />
+          <AboutCard title="Web Development" color="#f9bf3f" icon={<AiOutlineDingding />} />
+          <AboutCard title="Application" color="#a84cb8" icon={<AiOutlineVerified />} />
+
+        </SimpleGrid>
+
+        <HireCard />
+
+
+      </Container>
+
+
+
+      <Container as={"section"} maxW={"container.lg"} id={"Services"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
+        <Header title="WHAT I DO?" head="How i work" />
+
+
+        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} mt="117px" spacing={"30px"} >
+
+          <ServiceCard
+            title="Understand"
+            color="#2c98f0"
+            icon={<AiOutlineBulb />}
+            description="Understand the requirements, create user personas, define use cases. Having a knowledge about the user and his environment helps to provide a clear direction for the design."
+
+          />
+          <ServiceCard
+            title="Research"
+            color="#ec5453"
+            icon={<BsFillBookFill />}
+            description="Analyze competitors, research the latest trends while keeping an eye on the guidelines. This helps define the target, see similar projects and validate an idea before developing any solution."
+
+          />
+          <ServiceCard
+            title="Sketch"
+            color="#f9bf3f"
+            icon={<BsFillBrushFill />}
+            description="After gathering ideas on all aspects of job, I sketch, wireframe and design evaluate and make corrections."
+
+          />
+          <ServiceCard
+            title="Design "
+            color="#a84cb8"
+            icon={<BsFlower1 />}
+            description="Design the images and create prototypes for the job owner or user to have a view of what has been done."
+
+          />
+          <ServiceCard
+            title="Iteration"
+            color="#2fa499"
+            icon={<BsFillPatchExclamationFill />}
+            description="Do a review of the design with project owner. Sometimes projects demands adjustments and rethinking based on users criteria. I apply improvements on the project before hosting."
+
+          />
+          <ServiceCard
+            title="Deployment"
+            color="#4054b2"
+            icon={<BsFillPlugFill />}
+            description="Once the project is approved after we are ready to host, i get a domain and publish the web site."
+
+          />
+
+        </SimpleGrid>
+
+
+
+      </Container>
+
+      <Container as={"section"} maxW={"container.lg"} id={"Skills"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
+        <Header title="MY SPECIALTY" head="MY SKILLS" />
+
+        <Text mt={"72px"}>Over the last 3 years have been able to acquaint myself with this following skills,
+          and I have used them to developer live/exiting project for client all over the world that are happy client today</Text>
+
+        <SimpleGrid columns={{ base: 1, md: 2 }} mt="32px" spacing={"30px"} >
+
+          <Box>
+            <Text fontWeight={"700"} fontSize={"16px"}>Soft Skills/Computer Aid Design Skills</Text>
+
+            <Box mt={"32px"}>
+              <ProgressBar title="Research" color={"red"} level={"70"} />
+              <ProgressBar title="Negotiation" color={"teal"} level={"80"} />
+              <ProgressBar title="Communication" color={"blue"} level={"90"} />
+              <ProgressBar title="Microsoft Office" color={"yellow"} level={"60"} />
+              <ProgressBar title="Adobe Photo-shop" color={"red"} level={"50"} />
+              <ProgressBar title="WordPress" color={"blue"} level={"90"} />
+              <ProgressBar title="Corel Draw" color={"red"} level={"50"} />
+              <ProgressBar title="Adobe illustrator" color={"red"} level={"50"} />
+
+            </Box>
+
+
+          </Box>
+          <Box>
+            <Text fontWeight={"700"} fontSize={"16px"}>Computer Programming Skills</Text>
+
+            <Box mt={"32px"}>
+              <ProgressBar title="HTML5" color={"telegram"} level={"97"} />
+              <ProgressBar title="CSS3" color={"teal"} level={"87"} />
+              <ProgressBar title="JavaScript" color={"teal"} level={"77"} />
+              <ProgressBar title="TypeScript" color={"red"} level={"57"} />
+              <ProgressBar title="PHP" color={"teal"} level={"80"} />
+              <ProgressBar title="Laravel" color={"teal"} level={"85"} />
+              <ProgressBar title="React.js" color={"teal"} level={"80"} />
+              <ProgressBar title="Next.js" color={"yellow"} level={"60"} />
+            </Box>
+          </Box>
+
+        </SimpleGrid>
+
+      </Container>
+
+
+      <Container as={"section"} maxW={"container.lg"} id={"Education"} pt={"50px"} h={{ base: "auto", md: "100vh" }}>
+        <Header title="Education" head="Education" />
+
+        <Accordion mt={"72px"} allowMultiple>
+
+          <EducationCard title="Bachelor Degree of Chemistry" description=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat." />
+          <EducationCard title="Higher school Secondary education" description=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat." />
+
+        </Accordion>
+      </Container>
+
+      <Container as={"section"} maxW={"container.lg"} id={"Experience"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
+        <Header title="Experience" head="Work Experience" />
+
+        <Box mt={"72px"}>
+
+        <ExperienceCard
+          title="Senior Developer at ItSkillsCenter"
+          date="OCT 2021 - Present"
+          description="Tolerably earnestly middleton extremely distrusts she boy now not.
+          Add and offered prepare how cordial two promise. Greatly who affixed suppose
+          but enquire compact prepare all put. Added forth chief trees but rooms think may."
+          icon={<BsFillPencilFill/>}
+          color="#2c98f0"
+        />
+        <ExperienceCard
+          title="Front-end Designer at Gahawards"
+          date="JUN 2021 – SEP 2021"
+          description="Tolerably earnestly middleton extremely distrusts she boy now not.
+          Add and offered prepare how cordial two promise. Greatly who affixed suppose
+          but enquire compact prepare all put. Added forth chief trees but rooms think may."
+          icon={<BsFillPencilFill/>}
+          color="orange"
+        />
+        <ExperienceCard
+          title="Front-end Developer at Pc District"
+          date="NOV 2020 – MAR 2021"
+          description="Tolerably earnestly middleton extremely distrusts she boy now not.
+          Add and offered prepare how cordial two promise. Greatly who affixed suppose
+          but enquire compact prepare all put. Added forth chief trees but rooms think may."
+          icon={<BsFillPencilFill/>}
+          color="teal"
+        />
+        <EmpCard
+          color="transparent"
+        />
+      
+
+         
+
+         
+
+        </Box>
+      </Container>
+
+      <Container as={"section"} maxW={"container.lg"} id={"Work"} pt={"50px"} h={{ base: "auto", md: "100vh" }}>
+      <Header title="my work" head="recent work" />
+      <Tabs>
+      <TabList>
+        <Tab>One</Tab>
+        <Tab >Two</Tab>
+        <Tab>Three</Tab>
+      </TabList>
+      <TabPanels>
+        <TabPanel>1</TabPanel>
+        <TabPanel>2</TabPanel>
+        <TabPanel>3</TabPanel>
+      </TabPanels>
+    </Tabs>
+      </Container>
+
+    </MainLayout>
+  );
 }

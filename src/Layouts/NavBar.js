@@ -19,7 +19,7 @@ import { FaLinkedinIn,FaGithub,FaTwitter} from "react-icons/fa";
 export default function NavBar() {
   return (
     <>
-    <Box bgColor={"background"} display={{base: "none", md: "block"}} p="14px" w="300px" textAlign={"center"} overflowY={"scroll"} pos={"fixed"} left={"150px"} fontFamily={"body"} h={"100vh"}>
+    <Box bgColor={"background"}  p="14px" w="300px" textAlign={"center"} overflowY={"scroll"} pos={"fixed"} left={"150px"} fontFamily={"body"} h={"100vh"}>
     <Center mt={"32px"}>
       <Wrap>
       <WrapItem>
@@ -35,14 +35,14 @@ export default function NavBar() {
       </Text>
 
       <Stack mt={"32px"} spacing={"15px"}>
-          <LinkMenu link="google.com" title= "Home"/>
-          <LinkMenu link="google.com" title= "About"/>
-          <LinkMenu link="google.com" title= "Services"/>
-          <LinkMenu link="google.com" title= "Skills"/>
-          <LinkMenu link="google.com" title= "Education"/>
-          <LinkMenu link="google.com" title= "Experience"/>
-          <LinkMenu link="google.com" title= "Work"/>
-          <LinkMenu link="google.com" title= "Contact"/>
+          <LinkMenu link="#Home" title= "Home"/>
+          <LinkMenu link="#About" title= "About"/>
+          <LinkMenu link="#Services" title= "Services"/>
+          <LinkMenu link="#Skills" title= "Skills"/>
+          <LinkMenu link="#Education" title= "Education"/>
+          <LinkMenu link="#Experience" title= "Experience"/>
+          <LinkMenu link="#Work" title= "Work"/>
+          <LinkMenu link="#Contact" title= "Contact"/>
           
       </Stack>
 

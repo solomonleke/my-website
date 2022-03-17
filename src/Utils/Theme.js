@@ -38,7 +38,7 @@ const theme = extendTheme({
     background: '#F2F3F7',
     green: '#38890B',
     white: '#FFFFFF',
-    black: '#292F33',
+    black: '#000000',
   },
   initialColorMode: 'light',
   useSystemColorMode: false,

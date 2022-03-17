@@ -1,4 +1,5 @@
 import logo from './logo.svg';
+import './scroll.js';
 import './App.css';
 import Home from './Pages/Home';
 import Index from './Routes/Index';
