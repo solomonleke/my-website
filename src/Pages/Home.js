@@ -49,6 +49,7 @@ import ProgressBar from "../Components/ProgressBar";
 import EducationCard from "../Components/Card4";
 import ExperienceCard from "../Components/Card5";
 import EmpCard from "../Components/Card5.5";
+import WorkCard from "../Components/Card6";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -386,16 +387,124 @@ export default function Home() {
 
       <Container as={"section"} maxW={"container.lg"} id={"Work"} pt={"50px"} h={{ base: "auto", md: "100vh" }}>
       <Header title="my work" head="recent work" />
-      <Tabs>
-      <TabList>
-        <Tab>One</Tab>
-        <Tab >Two</Tab>
-        <Tab>Three</Tab>
-      </TabList>
+
+      <Tabs mt="72px">
+      <TabList overflowX={{base: "auto", lg: "none"}}>
+        <Tab _selected={{ color: 'white', bg: 'red.red500' }} >All</Tab>
+        <Tab _selected={{ color: 'white', bg: 'red.red500' }} >WordPress</Tab>
+        <Tab _selected={{ color: 'white', bg: 'red.red500' }} >React.js/Next.js</Tab>
+        <Tab  _selected={{ color: 'white', bg: 'red.red500' }} >Laravel</Tab>
+        <Tab _selected={{ color: 'white', bg: 'red.red500' }} >Others</Tab>
+        </TabList>
       <TabPanels>
-        <TabPanel>1</TabPanel>
-        <TabPanel>2</TabPanel>
-        <TabPanel>3</TabPanel>
+        <TabPanel>
+            <SimpleGrid columns={{base: 1, md: 2}} spacing={"20px"}>
+              <WorkCard
+                title= "Wiztech Ng (Php)"
+                description="Designed and managed wiztechNg with HTML, Css, javascript, Bootstrap and PHP fully responsive on all devices"
+                image="wiztech.png"
+                link="https://wiztechng.com/"
+              />
+              <WorkCard
+                title= "Bodds Support App (React.js)"
+                description="Designed the front-end of this project using React.js frame-work, CSS3, HTML5, and Consumed API for the functionality of the website"
+                image="bodd.png"
+                link="https://support.bodds.com.ng/"
+              />
+           
+              <WorkCard
+                title= "UI/UX Portfolio for a UI/UX Designer"
+                description="Designed this portfolio using CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
+                image="uiux.png"
+                link="https://elijahleke.com/"
+              />
+              <WorkCard
+                title= "A Portfolio design for a Concept Designer"
+                description="Designed the portfolio using CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
+                image="product_ope.png"
+                link="http://adelekeopeyemi.com.ng/"
+              />
+              <WorkCard
+                title= "UI/UX Portfolio for a Product Designer "
+                description="Designed the portfolio using CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
+                image="product_UI.png"
+                link="http://uiux.adelekeopeyemi.com.ng/"
+              />
+           
+              <WorkCard
+                title= "Logistic app (Laravel) "
+                description="Designed the logistic app using Laravel, CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
+                image="logistic.png"
+                link="http://my-logistic-app.herokuapp.com/"
+              />
+           
+            </SimpleGrid>
+        </TabPanel>
+        <TabPanel>
+        <SimpleGrid columns={{base: 1, md: 2}} spacing={"20px"}>
+       
+     
+      </SimpleGrid>
+        </TabPanel>
+        <TabPanel>
+        <SimpleGrid columns={{base: 1, md: 2}} spacing={"20px"}>
+      
+        <WorkCard
+          title= "Bodds Support App (React.js)"
+          description="Designed the front-end of this project using React.js frame-work, CSS3, HTML5, and Consumed API for the functionality of the website"
+          image="bodd.png"
+          link="https://support.bodds.com.ng/"
+        />
+     
+       
+      </SimpleGrid>
+        </TabPanel>
+        <TabPanel>
+        <SimpleGrid columns={{base: 1, md: 2}} spacing={"20px"}>
+      
+        <WorkCard
+        title= "Logistic app (Laravel) "
+        description="Designed the logistic app using Laravel, CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
+        image="logistic.png"
+        link="http://my-logistic-app.herokuapp.com/"
+      />
+   
+     
+       
+      </SimpleGrid>
+        </TabPanel>
+        <TabPanel>
+        <SimpleGrid columns={{base: 1, md: 2}} spacing={"20px"}>
+        <WorkCard
+          title= "Wiztech Ng (Php)"
+          description="Designed and managed wiztechNg with HTML, Css, javascript, Bootstrap and PHP fully responsive on all devices"
+          image="wiztech.png"
+          link="https://wiztechng.com/"
+        />
+     
+        <WorkCard
+          title= "UI/UX Portfolio for a UI/UX Designer"
+          description="Designed this portfolio using CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
+          image="uiux.png"
+          link="https://elijahleke.com/"
+        />
+
+        <WorkCard
+          title= "A Portfolio design for a Concept Designer"
+          description="Designed the portfolio using CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
+          image="product_ope.png"
+          link="http://adelekeopeyemi.com.ng/"
+        />
+
+        <WorkCard
+          title= "UI/UX Portfolio for a Product Designer "
+          description="Designed the portfolio using CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
+          image="product_UI.png"
+          link="http://uiux.adelekeopeyemi.com.ng/"
+        />
+     
+      </SimpleGrid>
+        </TabPanel>
       </TabPanels>
     </Tabs>
       </Container>
