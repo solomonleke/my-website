@@ -50,6 +50,7 @@ import EducationCard from "../Components/Card4";
 import ExperienceCard from "../Components/Card5";
 import EmpCard from "../Components/Card5.5";
 import WorkCard from "../Components/Card6";
+import { Fade, Slide } from "react-reveal";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
@@ -110,14 +111,18 @@ export default function Home() {
                 </Text>
 
                 <Stack mt={"32px"} spacing={"15px"}>
-                  <LinkMenu link="google.com" title="Home" />
-                  <LinkMenu link="google.com" title="About" />
-                  <LinkMenu link="google.com" title="Services" />
-                  <LinkMenu link="google.com" title="Skills" />
-                  <LinkMenu link="google.com" title="Education" />
-                  <LinkMenu link="google.com" title="Experience" />
-                  <LinkMenu link="google.com" title="Work" />
-                  <LinkMenu link="google.com" title="Contact" />
+               
+                <span onClick={onClose}>  <LinkMenu link="#Home" title="Home" /> </span>
+                <span onClick={onClose}>  <LinkMenu link="#About" title="About" /> </span>
+                <span onClick={onClose}>  <LinkMenu link="#Services" title="Services" /></span>
+                <span onClick={onClose}>  <LinkMenu link="#Skills" title="Skills" /></span>
+                <span onClick={onClose}>  <LinkMenu link="#Education" title="Education" /> </span>
+                <span onClick={onClose}>  <LinkMenu link="#Experience" title="Experience" /></span>
+                <span onClick={onClose}>  <LinkMenu link="#Work" title="Work" /></span>
+                <span onClick={onClose}>  <LinkMenu link="#Contact" title="Contact" /></span>
+
+                
+              
                 </Stack>
 
                 <Text fontSize={"12px"} mt={"32px"}>
@@ -169,45 +174,58 @@ export default function Home() {
       </Box>
       <Container as={"section"} maxW={"container.lg"} id={"Home"} pt={"50px"} mt={{ base: "10px" }} h={{ base: "auto", md: "100vh" }}>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={"12px"}>
-          <Box mt={{ base: "5px", md: "210px" }}>
-            <Text fontFamily={"title"} fontSize={{ base: "35px", md: "53px" }} lineHeight={{ base: "40px", md: "65px" }}>
-              Welcome <br /> To My Portfolio
-            </Text>
-            <Text mt={"22px"}>
-              I'm a Web developer that believes Web Sites should be of utmost
-              simplicity, be responsive and user-friendly.
-            </Text>
 
-            <Button
-              mt={"32px"}
-              onClick={download}
-              isLoading={isLoading}
-              rightIcon={<FaCloudDownloadAlt />}
-              color="red.red400"
-              variant="outline"
-            >
-              Download CV
-            </Button>
+
+          <Box mt={{ base: "5px", md: "210px" }}>
+            <Slide top duration={3000}>
+              <Text fontFamily={"title"} fontSize={{ base: "35px", md: "53px" }} lineHeight={{ base: "40px", md: "65px" }}>
+                Welcome <br /> To My Portfolio
+              </Text>
+            </Slide>
+            <Slide bottom duration={3000}>
+              <Text mt={"22px"}>
+                I'm a Web developer that believes Web Sites should be of utmost
+                simplicity, be responsive and user-friendly.
+              </Text>
+
+              <Button
+                mt={"32px"}
+                onClick={download}
+                isLoading={isLoading}
+                rightIcon={<FaCloudDownloadAlt />}
+                color="red.red400"
+                variant="outline"
+              >
+                Download CV
+              </Button>
+            </Slide>
           </Box>
-          <Box>
-            <Image w={{ base: "100%", md: "90%" }} src="about.png" />
-          </Box>
+
+
+          <Fade right duration={3000}>
+            <Box>
+              <Image w={{ base: "100%", md: "90%" }} src="about.png" />
+            </Box>
+          </Fade>
+
         </SimpleGrid>
       </Container>
 
       <Container as={"section"} maxW={"container.lg"} id={"About"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
         <Header title="about us" head="who am i ?" />
+        <Slide right duration={2000}>
+          <Text mt={"72px"}>
+            I'm a Software Engineer who lives by this code of perfection and simplicity, I strive to make sure that all my pieces of design get the response
+            "WOW". More so, the life of a designer is a life of fight. Fight against the ugliness. Just like a doctor fights against disease.
+            For me, the visual disease is what we have around, and what I try to do is cure it somehow with designs and apps I produce.
+            I love challenging my creativity by picking up complex designs and simplify them because I believe “Always Learning, Always Growing”
+          </Text>
 
-        <Text mt={"72px"}>
-          I'm a Software Engineer who lives by this code of perfection and simplicity, I strive to make sure that all my pieces of design get the response
-          "WOW". More so, the life of a designer is a life of fight. Fight against the ugliness. Just like a doctor fights against disease.
-          For me, the visual disease is what we have around, and what I try to do is cure it somehow with designs and apps I produce.
-          I love challenging my creativity by picking up complex designs and simplify them because I believe “Always Learning, Always Growing”
-        </Text>
+          <Text mt={"12px"}>I'm good with Html, Css, JavaScript, Laravel/Php, Node.js and React.js. I have work on projects like E-commerce
+            website, Logistics website, Delivery website to mention a
+            few using Laravel/Php, Next.js and React.js</Text>
+        </Slide>
 
-        <Text mt={"12px"}>I'm good with Html, Css, JavaScript, Laravel/Php, Node.js and React.js. I have work on projects like E-commerce
-          website, Logistics website, Delivery website to mention a
-          few using Laravel/Php, Next.js and React.js</Text>
 
         <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} mt="38px" spacing={"32px"}>
           <AboutCard title="Software" color="#2c98f0" icon={<AiOutlineBulb />} />
@@ -346,167 +364,167 @@ export default function Home() {
 
         <Box mt={"72px"}>
 
-        <ExperienceCard
-          title="Senior Developer at ItSkillsCenter"
-          date="OCT 2021 - Present"
-          description="Tolerably earnestly middleton extremely distrusts she boy now not.
+          <ExperienceCard
+            title="Senior Developer at ItSkillsCenter"
+            date="OCT 2021 - Present"
+            description="Tolerably earnestly middleton extremely distrusts she boy now not.
           Add and offered prepare how cordial two promise. Greatly who affixed suppose
           but enquire compact prepare all put. Added forth chief trees but rooms think may."
-          icon={<BsFillPencilFill/>}
-          color="#2c98f0"
-        />
-        <ExperienceCard
-          title="Front-end Designer at Gahawards"
-          date="JUN 2021 – SEP 2021"
-          description="Tolerably earnestly middleton extremely distrusts she boy now not.
+            icon={<BsFillPencilFill />}
+            color="#2c98f0"
+          />
+          <ExperienceCard
+            title="Front-end Designer at Gahawards"
+            date="JUN 2021 – SEP 2021"
+            description="Tolerably earnestly middleton extremely distrusts she boy now not.
           Add and offered prepare how cordial two promise. Greatly who affixed suppose
           but enquire compact prepare all put. Added forth chief trees but rooms think may."
-          icon={<BsFillPencilFill/>}
-          color="orange"
-        />
-        <ExperienceCard
-          title="Front-end Developer at Pc District"
-          date="NOV 2020 – MAR 2021"
-          description="Tolerably earnestly middleton extremely distrusts she boy now not.
+            icon={<BsFillPencilFill />}
+            color="orange"
+          />
+          <ExperienceCard
+            title="Front-end Developer at Pc District"
+            date="NOV 2020 – MAR 2021"
+            description="Tolerably earnestly middleton extremely distrusts she boy now not.
           Add and offered prepare how cordial two promise. Greatly who affixed suppose
           but enquire compact prepare all put. Added forth chief trees but rooms think may."
-          icon={<BsFillPencilFill/>}
-          color="teal"
-        />
-        <EmpCard
-          color="transparent"
-        />
-      
+            icon={<BsFillPencilFill />}
+            color="teal"
+          />
+          <EmpCard
+            color="transparent"
+          />
 
-         
 
-         
+
+
+
 
         </Box>
       </Container>
 
       <Container as={"section"} maxW={"container.lg"} id={"Work"} pt={"50px"} h={{ base: "auto", md: "100vh" }}>
-      <Header title="my work" head="recent work" />
+        <Header title="my work" head="recent work" />
 
-      <Tabs mt="72px">
-      <TabList overflowX={{base: "auto", lg: "none"}}>
-        <Tab _selected={{ color: 'white', bg: 'red.red500' }} >All</Tab>
-        <Tab _selected={{ color: 'white', bg: 'red.red500' }} >WordPress</Tab>
-        <Tab _selected={{ color: 'white', bg: 'red.red500' }} >React.js/Next.js</Tab>
-        <Tab  _selected={{ color: 'white', bg: 'red.red500' }} >Laravel</Tab>
-        <Tab _selected={{ color: 'white', bg: 'red.red500' }} >Others</Tab>
-        </TabList>
-      <TabPanels>
-        <TabPanel>
-            <SimpleGrid columns={{base: 1, md: 2}} spacing={"20px"}>
-              <WorkCard
-                title= "Wiztech Ng (Php)"
-                description="Designed and managed wiztechNg with HTML, Css, javascript, Bootstrap and PHP fully responsive on all devices"
-                image="wiztech.png"
-                link="https://wiztechng.com/"
-              />
-              <WorkCard
-                title= "Bodds Support App (React.js)"
-                description="Designed the front-end of this project using React.js frame-work, CSS3, HTML5, and Consumed API for the functionality of the website"
-                image="bodd.png"
-                link="https://support.bodds.com.ng/"
-              />
-           
-              <WorkCard
-                title= "UI/UX Portfolio for a UI/UX Designer"
-                description="Designed this portfolio using CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
-                image="uiux.png"
-                link="https://elijahleke.com/"
-              />
-              <WorkCard
-                title= "A Portfolio design for a Concept Designer"
-                description="Designed the portfolio using CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
-                image="product_ope.png"
-                link="http://adelekeopeyemi.com.ng/"
-              />
-              <WorkCard
-                title= "UI/UX Portfolio for a Product Designer "
-                description="Designed the portfolio using CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
-                image="product_UI.png"
-                link="http://uiux.adelekeopeyemi.com.ng/"
-              />
-           
-              <WorkCard
-                title= "Logistic app (Laravel) "
-                description="Designed the logistic app using Laravel, CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
-                image="logistic.png"
-                link="http://my-logistic-app.herokuapp.com/"
-              />
-           
-            </SimpleGrid>
-        </TabPanel>
-        <TabPanel>
-        <SimpleGrid columns={{base: 1, md: 2}} spacing={"20px"}>
-       
-     
-      </SimpleGrid>
-        </TabPanel>
-        <TabPanel>
-        <SimpleGrid columns={{base: 1, md: 2}} spacing={"20px"}>
-      
-        <WorkCard
-          title= "Bodds Support App (React.js)"
-          description="Designed the front-end of this project using React.js frame-work, CSS3, HTML5, and Consumed API for the functionality of the website"
-          image="bodd.png"
-          link="https://support.bodds.com.ng/"
-        />
-     
-       
-      </SimpleGrid>
-        </TabPanel>
-        <TabPanel>
-        <SimpleGrid columns={{base: 1, md: 2}} spacing={"20px"}>
-      
-        <WorkCard
-        title= "Logistic app (Laravel) "
-        description="Designed the logistic app using Laravel, CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
-        image="logistic.png"
-        link="http://my-logistic-app.herokuapp.com/"
-      />
-   
-     
-       
-      </SimpleGrid>
-        </TabPanel>
-        <TabPanel>
-        <SimpleGrid columns={{base: 1, md: 2}} spacing={"20px"}>
-        <WorkCard
-          title= "Wiztech Ng (Php)"
-          description="Designed and managed wiztechNg with HTML, Css, javascript, Bootstrap and PHP fully responsive on all devices"
-          image="wiztech.png"
-          link="https://wiztechng.com/"
-        />
-     
-        <WorkCard
-          title= "UI/UX Portfolio for a UI/UX Designer"
-          description="Designed this portfolio using CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
-          image="uiux.png"
-          link="https://elijahleke.com/"
-        />
+        <Tabs mt="72px">
+          <TabList overflowX={{ base: "auto", lg: "none" }}>
+            <Tab _selected={{ color: 'white', bg: 'red.red500' }} >All</Tab>
+            <Tab _selected={{ color: 'white', bg: 'red.red500' }} >WordPress</Tab>
+            <Tab _selected={{ color: 'white', bg: 'red.red500' }} >React.js/Next.js</Tab>
+            <Tab _selected={{ color: 'white', bg: 'red.red500' }} >Laravel</Tab>
+            <Tab _selected={{ color: 'white', bg: 'red.red500' }} >Others</Tab>
+          </TabList>
+          <TabPanels>
+            <TabPanel>
+              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={"20px"}>
+                <WorkCard
+                  title="Wiztech Ng (Php)"
+                  description="Designed and managed wiztechNg with HTML, Css, javascript, Bootstrap and PHP fully responsive on all devices"
+                  image="wiztech.png"
+                  link="https://wiztechng.com/"
+                />
+                <WorkCard
+                  title="Bodds Support App (React.js)"
+                  description="Designed the front-end of this project using React.js frame-work, CSS3, HTML5, and Consumed API for the functionality of the website"
+                  image="bodd.png"
+                  link="https://support.bodds.com.ng/"
+                />
 
-        <WorkCard
-          title= "A Portfolio design for a Concept Designer"
-          description="Designed the portfolio using CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
-          image="product_ope.png"
-          link="http://adelekeopeyemi.com.ng/"
-        />
+                <WorkCard
+                  title="UI/UX Portfolio for a UI/UX Designer"
+                  description="Designed this portfolio using CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
+                  image="uiux.png"
+                  link="https://elijahleke.com/"
+                />
+                <WorkCard
+                  title="A Portfolio design for a Concept Designer"
+                  description="Designed the portfolio using CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
+                  image="product_ope.png"
+                  link="http://adelekeopeyemi.com.ng/"
+                />
+                <WorkCard
+                  title="UI/UX Portfolio for a Product Designer "
+                  description="Designed the portfolio using CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
+                  image="product_UI.png"
+                  link="http://uiux.adelekeopeyemi.com.ng/"
+                />
 
-        <WorkCard
-          title= "UI/UX Portfolio for a Product Designer "
-          description="Designed the portfolio using CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
-          image="product_UI.png"
-          link="http://uiux.adelekeopeyemi.com.ng/"
-        />
-     
-      </SimpleGrid>
-        </TabPanel>
-      </TabPanels>
-    </Tabs>
+                <WorkCard
+                  title="Logistic app (Laravel) "
+                  description="Designed the logistic app using Laravel, CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
+                  image="logistic.png"
+                  link="http://my-logistic-app.herokuapp.com/"
+                />
+
+              </SimpleGrid>
+            </TabPanel>
+            <TabPanel>
+              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={"20px"}>
+
+
+              </SimpleGrid>
+            </TabPanel>
+            <TabPanel>
+              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={"20px"}>
+
+                <WorkCard
+                  title="Bodds Support App (React.js)"
+                  description="Designed the front-end of this project using React.js frame-work, CSS3, HTML5, and Consumed API for the functionality of the website"
+                  image="bodd.png"
+                  link="https://support.bodds.com.ng/"
+                />
+
+
+              </SimpleGrid>
+            </TabPanel>
+            <TabPanel>
+              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={"20px"}>
+
+                <WorkCard
+                  title="Logistic app (Laravel) "
+                  description="Designed the logistic app using Laravel, CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
+                  image="logistic.png"
+                  link="http://my-logistic-app.herokuapp.com/"
+                />
+
+
+
+              </SimpleGrid>
+            </TabPanel>
+            <TabPanel>
+              <SimpleGrid columns={{ base: 1, md: 2 }} spacing={"20px"}>
+                <WorkCard
+                  title="Wiztech Ng (Php)"
+                  description="Designed and managed wiztechNg with HTML, Css, javascript, Bootstrap and PHP fully responsive on all devices"
+                  image="wiztech.png"
+                  link="https://wiztechng.com/"
+                />
+
+                <WorkCard
+                  title="UI/UX Portfolio for a UI/UX Designer"
+                  description="Designed this portfolio using CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
+                  image="uiux.png"
+                  link="https://elijahleke.com/"
+                />
+
+                <WorkCard
+                  title="A Portfolio design for a Concept Designer"
+                  description="Designed the portfolio using CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
+                  image="product_ope.png"
+                  link="http://adelekeopeyemi.com.ng/"
+                />
+
+                <WorkCard
+                  title="UI/UX Portfolio for a Product Designer "
+                  description="Designed the portfolio using CSS3, HTML5, Bootstrap,  JQuery and javascript and fully responsive on all device"
+                  image="product_UI.png"
+                  link="http://uiux.adelekeopeyemi.com.ng/"
+                />
+
+              </SimpleGrid>
+            </TabPanel>
+          </TabPanels>
+        </Tabs>
       </Container>
 
     </MainLayout>

@@ -32,12 +32,14 @@ import {
     
   } from "@chakra-ui/react";
   import { AiOutlineMinus,AiOutlinePlus } from "react-icons/ai";
+import { Fade } from 'react-reveal';
 
 export default function EducationCard({title,description}) {
   return (
+    <Fade bottom duration={2000}>
     <AccordionItem my={"10px"}>
     {({ isExpanded }) => (
-        <>
+        <div>
             <h2>
               <AccordionButton bg="#C0C0C1" _expanded={{ bg: 'teal', color: 'white' }}>
                 <Box flex='1' textAlign='left' textTransform={"uppercase"}>
@@ -52,9 +54,11 @@ export default function EducationCard({title,description}) {
             <AccordionPanel pb={4}>
              {description}
             </AccordionPanel>
-            </>
+            </div>
     )}
           </AccordionItem>
+    </Fade>
+   
 
   )
 }

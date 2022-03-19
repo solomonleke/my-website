@@ -48,7 +48,7 @@ export default function Button({
       loadingText="Please wait . . ."
       type={isSubmit ? 'submit' : 'button'}
       disabled={isLoading || disabled}
-      w={full && '100%'}
+      w={'100%'}
       px="32px"
       leftIcon={leftIcon}
       rightIcon={rightIcon}

@@ -14,13 +14,13 @@ export default function WorkCard({title, description, link, image}) {
         >
 
             <FrontSide  style={{padding: "none" , boxShadow: "none", width: "100%", height: "100%" }}>
-                <Box w="100%" h="100%">
+                <Box w="100%" h="100%" cursor={"pointer"}>
                     <Image src={`${image}`} w="100%" h="100%" objectFit={"cover"} />
                 </Box>
             </FrontSide>
 
             <BackSide  style={{padding: "none", boxShadow: "none", width: "100%", height: "100%" }}>
-                <Box w="100%" h="100%" bgColor="teal" p={"20px"} color="white" >
+                <Box  cursor={"pointer"} w="100%" h="100%" bgColor="teal" p={"20px"} color="white" >
 
                 <Text fontSize={"20px"} fontWeight="600" fontFamily={"heading"}>{title}</Text>
                 <Text fontSize={"16px"} fontWeight="400" my={"20px"}>{description}</Text>
