@@ -98,7 +98,8 @@ export default function Home() {
                       <Avatar
                         size="2xl"
                         name="Solomon Adeleke"
-                        src="avater.jpeg"
+                        src="avater.jpeg.png"
+                        bgColor="white" 
                       />{" "}
                     </WrapItem>
                   </Wrap>
@@ -203,7 +204,7 @@ export default function Home() {
 
 
           <Fade right duration={3000}>
-            <Box>
+            <Box >
               <Image w={{ base: "100%", md: "90%" }} src="about.png" />
             </Box>
           </Fade>
@@ -429,6 +430,12 @@ export default function Home() {
                   image="bodd.png"
                   link="https://support.bodds.com.ng/"
                 />
+                <WorkCard
+                  title="Eco-Basket (React.js)"
+                  description="Designed this project using React.js frame-work, CSS3, HTML5, and made sure it's responsive on all devices"
+                  image="eco-basket.png"
+                  link="https://noahadeleke.com/"
+                />
 
                 <WorkCard
                   title="UI/UX Portfolio for a UI/UX Designer"
@@ -473,6 +480,13 @@ export default function Home() {
                   image="bodd.png"
                   link="https://support.bodds.com.ng/"
                 />
+
+                <WorkCard
+                title="Eco-Basket (React.js)"
+                description="Designed this project using React.js frame-work, CSS3, HTML5, and made sure it's responsive on all devices"
+                image="eco-basket.png"
+                link="https://noahadeleke.com/"
+              />
 
 
               </SimpleGrid>

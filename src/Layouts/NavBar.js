@@ -23,7 +23,7 @@ export default function NavBar() {
     <Center mt={"32px"}>
       <Wrap>
       <WrapItem>
-        <Avatar size='2xl' name='Solomon Adeleke' src='avater.jpeg' />{' '}
+        <Avatar size='2xl' name='Solomon Adeleke' src='avater.jpeg.png' bgColor="white" />{' '}
       </WrapItem>
     </Wrap>
     </Center>

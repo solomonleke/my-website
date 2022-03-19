@@ -39,7 +39,7 @@ export default function ExperienceCard({title,description, color, icon, date}) {
 
     <Box w="10%" display={{base: "none", md: "block"}} cursor="pointer">
       <Stack >
-      <Roll bottom duration={2300}>
+      <Roll bottom duration={2500}>
       <Box _hover={{bgColor: "green"}} transition="0.5s" bg={`${color}`} border={"4px solid #f2f3f7"} borderRadius="100%" width={"50px"} h={"50px"}><Center color="white" pt="10px" fontSize={"20"}>{icon}</Center></Box>
       </Roll>
         <Box left="23px" top={"-2"} pos={"relative"}  borderLeft={"6px dotted #f2f3f7"} width={"1px"} h={"160px"}></Box>
