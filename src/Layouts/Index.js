@@ -16,7 +16,7 @@ import {
 
 export default function MainLayout({children, bgColor = "white"}) {
   return (
-    <Container maxW={"container.xl"} >
+    <Container maxW={"container.xl"} scrollBehavior="smooth">
     <HStack align={"flex-start"} pos={"relative"}>
     <Box display={{base: "none", md: "block"}}>
     <NavBar/>

@@ -8,8 +8,8 @@ const theme = extendTheme({
   },
   colors: {
     blue: {
-      blue500: '#211f5c',
-      blue400: '#2C346D',
+      blue500: '#2c98f0',
+      blue400: '#2c92f0',
       blue300: '#3A4A7E',
       blue200: '#6689BB',
       blue100: '#78AADB',
@@ -29,7 +29,7 @@ const theme = extendTheme({
       orange100: '#FEE8C9',
     },
     gray: {
-      gray500: '#524F4E',
+      gray500: '#211f5c',
       gray400: '#606060',
       gray300: '#858383',
       gray200: '#C0C0C1',

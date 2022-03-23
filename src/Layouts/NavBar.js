@@ -18,8 +18,8 @@ import { FaLinkedinIn,FaGithub,FaTwitter} from "react-icons/fa";
 
 export default function NavBar() {
   return (
-    <>
-    <Box bgColor={"background"}  p="14px" w="300px" textAlign={"center"} overflowY={"scroll"} pos={"fixed"} left={"150px"} fontFamily={"body"} h={"100vh"}>
+    
+    <Box bgColor={"background"} p="14px" w="300px" textAlign={"center"} overflowY={"scroll"} pos={"fixed"}  fontFamily={"body"} h={"100vh"} >
     <Center mt={"32px"}>
       <Wrap>
       <WrapItem>
@@ -48,7 +48,7 @@ export default function NavBar() {
 
       <Text fontSize={"12px"} mt={"32px"}>© Copyright ©2022 All rights reserved |</Text>
 
-      <Text fontSize={"12px"}  mt={"12px"}>This Portfolio is made with <i className="fa-solid fa-heart" /> by <Box as={"span"} color={"red.red500"}>solomonleke</Box> </Text>
+      <Text fontSize={"12px"}  mt={"12px"}>This Portfolio is made with <i className="fa-solid fa-heart" /> by <Box as={"span"} color={"blue.blue500"}>solomonleke</Box> </Text>
 
     <Center mt={"12px"} pb={"62px"}>
      <HStack spacing={"12px"} cursor={"pointer"}>
@@ -66,7 +66,7 @@ export default function NavBar() {
     </Box>
 
     
-    </>
+   
     
   )
 }

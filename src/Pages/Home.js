@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef  } from "react";
 import MainLayout from "../Layouts/Index";
 import Request from "../Utils/Request";
 import Seo from "../Utils/Seo";
@@ -32,15 +32,20 @@ import {
   AccordionButton,
   AccordionPanel,
   AccordionIcon,
-  Tabs, TabList, TabPanels, Tab, TabPanel
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  Tabs, TabList, TabPanels, Tab, TabPanel, Textarea, CloseButton
 } from "@chakra-ui/react";
 import { AiOutlineAlignLeft, AiFillBulb, AiOutlineBulb, AiOutlineWoman, AiOutlineDingding, AiOutlineVerified } from "react-icons/ai";
-import { FaCloudDownloadAlt } from "react-icons/fa";
+import { FaCloudDownloadAlt, FaMapMarkedAlt } from "react-icons/fa";
+import { MdOutgoingMail } from "react-icons/md";
 import NavBar from "../Layouts/NavBar";
 
 import LinkMenu from "../Components/LinkMenu";
 import { FaLinkedinIn, FaGithub, FaTwitter } from "react-icons/fa";
-import { BsFillBookFill, BsFillBrushFill, BsFlower1, BsFillPatchExclamationFill, BsFillPlugFill, BsFillPencilFill } from "react-icons/bs";
+import { BsFillBookFill, BsFillBrushFill, BsFlower1, BsFillPatchExclamationFill, BsFillPlugFill, BsFillPencilFill, BsFillTelephoneInboundFill } from "react-icons/bs";
 import Header from "../Components/Header";
 import AboutCard from "../Components/Card";
 import HireCard from "../Components/Card2";
@@ -51,19 +56,58 @@ import ExperienceCard from "../Components/Card5";
 import EmpCard from "../Components/Card5.5";
 import WorkCard from "../Components/Card6";
 import { Fade, Slide } from "react-reveal";
+import Jump from 'react-reveal/Jump'
+import ContactCard from "../Components/Card7";
+import Input from "../Components/Input";
+import TextInput from "../Components/TextInput";
+import emailjs from "emailjs-com";
+
 
 export default function Home() {
+
+  const form = useRef();
   const [isLoading, setIsLoading] = useState(false);
 
-  const download = () => {
+  const download = async ()=>{
     setIsLoading(true);
+       const res = await new Request().get({url:"https://jsonplaceholder.typicode.com/posts"})
+       setIsLoading(false);
+        console.log(res)
+  
   };
+
+ 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [placement, setPlacement] = React.useState("left");
-  // const getApi = async ()=>{
-  //    const res = await new Request().get({url:"https://jsonplaceholder.typicode.com/posts"})
-  //     console.log(res)
-  // }
+
+const [Name, setName] = useState("")
+const [Email, setEmail] = useState("")
+const [Subject, setSubject] = useState("")
+const [Message, setMessage] = useState("")
+const [Success, setSuccess] = useState(false)
+
+
+  const getApi = async ()=>{
+    
+     const res = await new Request().get({url:"https://jsonplaceholder.typicode.com/posts"})
+     
+     setIsLoading(false);
+     setSuccess(true)
+  }
+
+const sendEmail = (e) => {
+  setIsLoading(true);
+  e.preventDefault();
+  setName("")
+  setEmail("")
+  setSubject("")
+  setMessage("")
+  
+  emailjs.sendForm('gmail', 'template_ap6qzyl', form.current, 'pW4lu_RfjF4aAD_PY')
+  getApi()
+
+};
+
 
   return (
     <MainLayout>
@@ -99,7 +143,7 @@ export default function Home() {
                         size="2xl"
                         name="Solomon Adeleke"
                         src="avater.jpeg.png"
-                        bgColor="white" 
+                        bgColor="white"
                       />{" "}
                     </WrapItem>
                   </Wrap>
@@ -112,18 +156,18 @@ export default function Home() {
                 </Text>
 
                 <Stack mt={"32px"} spacing={"15px"}>
-               
-                <span onClick={onClose}>  <LinkMenu link="#Home" title="Home" /> </span>
-                <span onClick={onClose}>  <LinkMenu link="#About" title="About" /> </span>
-                <span onClick={onClose}>  <LinkMenu link="#Services" title="Services" /></span>
-                <span onClick={onClose}>  <LinkMenu link="#Skills" title="Skills" /></span>
-                <span onClick={onClose}>  <LinkMenu link="#Education" title="Education" /> </span>
-                <span onClick={onClose}>  <LinkMenu link="#Experience" title="Experience" /></span>
-                <span onClick={onClose}>  <LinkMenu link="#Work" title="Work" /></span>
-                <span onClick={onClose}>  <LinkMenu link="#Contact" title="Contact" /></span>
 
-                
-              
+                  <span onClick={onClose}>  <LinkMenu link="#Home" title="Home" /> </span>
+                  <span onClick={onClose}>  <LinkMenu link="#About" title="About" /> </span>
+                  <span onClick={onClose}>  <LinkMenu link="#Services" title="Services" /></span>
+                  <span onClick={onClose}>  <LinkMenu link="#Skills" title="Skills" /></span>
+                  <span onClick={onClose}>  <LinkMenu link="#Education" title="Education" /> </span>
+                  <span onClick={onClose}>  <LinkMenu link="#Experience" title="Experience" /></span>
+                  <span onClick={onClose}>  <LinkMenu link="#Work" title="Work" /></span>
+                  <span onClick={onClose}>  <LinkMenu link="#Contact" title="Contact" /></span>
+
+
+
                 </Stack>
 
                 <Text fontSize={"12px"} mt={"32px"}>
@@ -197,15 +241,17 @@ export default function Home() {
                 color="red.red400"
                 variant="outline"
               >
-                Download CV
+                <Text as="a" href="https://drive.google.com/u/0/uc?id=1Yd38AII3GNx5FJB9dwLtZ3dQTDPLBpyS&export=download">Download CV</Text>
               </Button>
             </Slide>
           </Box>
 
 
           <Fade right duration={3000}>
-            <Box >
-              <Image w={{ base: "100%", md: "90%" }} src="about.png" />
+          
+          <Box pos="relative">
+          <Image w={{ base: "100%", md: "90%" }} src="about.png" />
+            <Image w={{ base: "100%", md: "60%" }} pos={"absolute"} display={{base: "none",  md: "block"}} top="0" left="190px" zIndex="-1" src="circle-sEnd.png" />
             </Box>
           </Fade>
 
@@ -222,7 +268,7 @@ export default function Home() {
             I love challenging my creativity by picking up complex designs and simplify them because I believe “Always Learning, Always Growing”
           </Text>
 
-          <Text mt={"12px"}>I'm good with Html, Css, JavaScript, Laravel/Php, Node.js and React.js. I have work on projects like E-commerce
+          <Text mt={"12px"}>I'm good with Html, Css, JavaScript, Laravel/Php, Node.js and React.js. I have workrd on projects like E-commerce
             website, Logistics website, Delivery website to mention a
             few using Laravel/Php, Next.js and React.js</Text>
         </Slide>
@@ -301,8 +347,8 @@ export default function Home() {
       <Container as={"section"} maxW={"container.lg"} id={"Skills"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
         <Header title="MY SPECIALTY" head="MY SKILLS" />
 
-        <Text mt={"72px"}>Over the last 3 years have been able to acquaint myself with this following skills,
-          and I have used them to developer live/exiting project for client all over the world that are happy client today</Text>
+        <Text mt={"72px"}>Over the last 3 years, I've been able to acquaint myself with this following skills,
+          and I have used them to developer live/existing projects for clients all over the world that are happy clients today</Text>
 
         <SimpleGrid columns={{ base: 1, md: 2 }} mt="32px" spacing={"30px"} >
 
@@ -404,7 +450,7 @@ export default function Home() {
         </Box>
       </Container>
 
-      <Container as={"section"} maxW={"container.lg"} id={"Work"} pt={"50px"} h={{ base: "auto", md: "100vh" }}>
+      <Container as={"section"} maxW={"container.lg"} id={"Work"} pt={"50px"} h={{ base: "auto", md: "autoa" }}>
         <Header title="my work" head="recent work" />
 
         <Tabs mt="72px">
@@ -482,11 +528,11 @@ export default function Home() {
                 />
 
                 <WorkCard
-                title="Eco-Basket (React.js)"
-                description="Designed this project using React.js frame-work, CSS3, HTML5, and made sure it's responsive on all devices"
-                image="eco-basket.png"
-                link="https://noahadeleke.com/"
-              />
+                  title="Eco-Basket (React.js)"
+                  description="Designed this project using React.js frame-work, CSS3, HTML5, and made sure it's responsive on all devices"
+                  image="eco-basket.png"
+                  link="https://noahadeleke.com/"
+                />
 
 
               </SimpleGrid>
@@ -540,6 +586,59 @@ export default function Home() {
           </TabPanels>
         </Tabs>
       </Container>
+
+
+      <Container as={"section"} maxW={"container.lg"} id={"Contact"} pt={"50px"} h={{ base: "auto", md: "100vh" }}>
+        <Header title="Get in touch" head="contact" />
+        <Box mt="72px">
+          {
+            Success ? (
+              <Slide right duration={3000}>
+              <Alert status='success' mb="15px" color="white" bg="teal">
+              <AlertIcon />
+              <AlertTitle mr={2}>Thank you for reaching out!</AlertTitle>
+              <AlertDescription>A message will be sent to you shortly.</AlertDescription>
+              <CloseButton onClick={()=>setSuccess(false)} position='absolute' right='8px' top='8px' />
+            </Alert> 
+              </Slide>
+             
+            ):("")
+          }
+          <SimpleGrid columns={{ base: 1, md: 2 }} method="post">
+            <Box>
+              <ContactCard icon={<MdOutgoingMail/>} title="lordsoliz@gmail.com" />
+              <ContactCard icon={<FaMapMarkedAlt/>} title={`No 1, Johnson Sami-iye Street, Lagos, Nigeria.`} />
+              <ContactCard icon={<BsFillTelephoneInboundFill/>} title="+23460888922" />
+            </Box>
+            <form ref={form} onSubmit={sendEmail}>
+            <Stack spacing="27px">
+            <Jump duration={2000}>
+            <Input name="Name" val={Name && true} onChange={(e)=>setName(e.target.value)} placeholder="Name" value={Name} label="Name"  type= "text" />
+            </Jump>
+            <Jump  duration={2000}>
+            <Input name="Email" val={Email && true} onChange={(e)=>setEmail(e.target.value)} placeholder="Email" value={Email} label="Email"  type= "text" />
+            </Jump>
+            <Jump  duration={2000}>
+            <Input  name="Subject"  val={Subject && true} onChange={(e)=>setSubject(e.target.value)} placeholder="Subject" value={Subject} label="Subject"  type= "text" />
+
+            </Jump>
+            <Jump  duration={2000}>
+            <TextInput  name="Message"  val={Message && true} onChange={(e)=>setMessage(e.target.value)} placeholder="Message" value={Message} label="Message" />
+
+            </Jump>
+            
+            <Button type="submit"  loadingText="Sending Mail. . ."  isLoading={isLoading} _hover={{bgColor: "blue.blue300", color: "#fff"}}  color="white" bgColor="blue.blue500">Send Message</Button>
+            </Stack>
+            </form>
+           
+            
+          </SimpleGrid>
+
+         
+        </Box>
+
+      </Container>
+
 
     </MainLayout>
   );

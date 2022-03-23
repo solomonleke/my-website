@@ -33,7 +33,7 @@ const nav = ()=>{
 
   return (
     <LinkBox  onClick={nav}  as={"a"} cursor={"pointer"}>
-     <Text  color={"blue.blue500"}  _hover={{color: "red.red500", borderBottom: "2px solid red.red500"}} >{title}</Text>
+     <Text  color={"gray.gray500"}  _hover={{color: "blue.blue500", borderBottom: "2px solid red.red500"}} >{title}</Text>
       
     </LinkBox>
   )
