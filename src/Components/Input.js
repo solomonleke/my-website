@@ -5,6 +5,7 @@ import {
     Input as InputBox,
     InputGroup,
     InputRightElement,
+    useColorModeValue,
   } from '@chakra-ui/react';
   import React, { useState } from 'react';
   import { FaEye } from 'react-icons/fa';
@@ -29,7 +30,9 @@ import {
     // const [value, setValue] = useState(val);
   
     const [inputType, setInputType] = useState(type);
-  
+    const bg = useColorModeValue("#fff", "#1A202C")
+    const colorT = useColorModeValue("gray.gray300", "#fff")
+    const focusColor = useColorModeValue("blue.blue500", "teal")
     return (
       <FormControl
         id={id}
@@ -45,8 +48,8 @@ import {
           zIndex="10"
           fontSize={active ? 'xs' : 'sm'}
           fontWeight="300"
-          color={'gray.gray300'}
-          bg="#fff"
+          color={colorT}
+          bg={bg}
           px="4px"
         >
           {label}
@@ -61,7 +64,7 @@ import {
               placeholder={active || !label ? placeholder : ''}
               type={inputType}
               focusBorderColor={'blue.blue500'}
-              _focus={{ borderColor: 'blue.blue500' }}
+              _focus={{ borderColor: focusColor }}
               size={size}
               fontSize="sm"
               fontWeight={'300'}

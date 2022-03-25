@@ -29,22 +29,24 @@ import {
     AccordionButton,
     AccordionPanel,
     AccordionIcon,
-    Tabs, TabList, TabPanels, Tab, TabPanel
+    Tabs, TabList, TabPanels, Tab, TabPanel, useColorModeValue
   } from "@chakra-ui/react";
 import { AiFillMail } from 'react-icons/ai';
 import { Fade } from 'react-reveal';
 
 export default function ContactCard({icon, title}) {
+  const boxColor = useColorModeValue("background", "teal")
+  const iconColor = useColorModeValue( "blue.blue500" , "white")
   return (
     <Fade bottom duration={3000}>
     <HStack spacing="30px" mb="20px">
-    <Box w="100px" h="100px" bgColor="background">
-        <Center color= "blue.blue500" fontSize="30px" mt="35px">
+    <Box w="100px" h="100px" bgColor={boxColor}>
+        <Center color={iconColor} fontSize="30px" mt="35px">
            {icon}
         </Center>
     </Box>
 
-    <Text  color= "blue.blue500" fontSize={"15px"}>{title}</Text>
+    <Text  color={iconColor} fontSize={"15px"}>{title}</Text>
   </HStack>
     </Fade>
    

@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, Textarea } from '@chakra-ui/react'
+import { FormControl, FormLabel, Textarea, useColorModeValue } from '@chakra-ui/react'
 import React from 'react'
 import { useState } from 'react';
 
@@ -20,6 +20,10 @@ rightIcon = null,
     const [active, setActive] = useState(rest.value);
   
     const [inputType, setInputType] = useState(type);
+
+    const bg = useColorModeValue("#fff", "#1A202C")
+    const colorT = useColorModeValue("gray.gray300", "#fff")
+    const focusColor = useColorModeValue("blue.blue500", "teal")
   return (
     <FormControl 
     id={id}
@@ -35,8 +39,8 @@ rightIcon = null,
         zIndex="10"
         fontSize={active ? 'xs' : 'sm'}
         fontWeight="300"
-        color={'gray.gray300'}
-        bg="#fff"
+        color={colorT}
+        bg={bg}
         px="4px"
         >
             {label}
@@ -49,7 +53,7 @@ rightIcon = null,
         placeholder={active || !label ? placeholder : ''}
         type={inputType}
         focusBorderColor={'blue.blue500'}
-        _focus={{ borderColor: 'blue.blue500' }}
+        _focus={{ borderColor: focusColor}}
         size={size}
         fontSize="sm"
         fontWeight={'300'}

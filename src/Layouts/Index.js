@@ -14,12 +14,12 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-export default function MainLayout({children, bgColor = "white"}) {
+export default function MainLayout({children, home=false, about=false, service=false, skill=false, education=false, experience=false, work=false, contact=false, bgColor = "white"}) {
   return (
     <Container maxW={"container.xl"} scrollBehavior="smooth">
     <HStack align={"flex-start"} pos={"relative"}>
     <Box display={{base: "none", md: "block"}}>
-    <NavBar/>
+    <NavBar home={home} about={about} service={service} skill={skill} education={education} experience={experience} work={work} contact={contact} />
     </Box>
   
 

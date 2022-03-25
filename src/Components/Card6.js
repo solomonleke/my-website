@@ -1,10 +1,12 @@
-import { Box, Image, Text } from '@chakra-ui/react'
+import { Box, Image, Text, useColorModeValue } from '@chakra-ui/react'
 import React from 'react'
 import Flippy, { FrontSide, BackSide } from 'react-flippy';
 import Button from './Button';
 import { AiOutlineRise } from "react-icons/ai";
 import { Fade } from 'react-reveal';
 export default function WorkCard({ title, description, link, image }) {
+
+    const boxColor = useColorModeValue("#teal", "#606060")
     return (
 
         <Fade right duration={2500}>
@@ -22,7 +24,7 @@ export default function WorkCard({ title, description, link, image }) {
                 </FrontSide>
 
                 <BackSide style={{ padding: "none", boxShadow: "none", width: "100%", height: "100%" }}>
-                    <Box cursor={"pointer"} w="100%" h="100%" bgColor="teal" p={"20px"} color="white" >
+                    <Box cursor={"pointer"} w="100%" h="100%" bgColor={boxColor} p={"20px"} color="white" >
 
                         <Text fontSize={"20px"} fontWeight="600" fontFamily={"heading"}>{title}</Text>
                         <Text fontSize={"16px"} fontWeight="400" my={"20px"}>{description}</Text>

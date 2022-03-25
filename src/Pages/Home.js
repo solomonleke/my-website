@@ -1,4 +1,4 @@
-import React, { useState, useRef  } from "react";
+import React, { useState, useRef } from "react";
 import MainLayout from "../Layouts/Index";
 import Request from "../Utils/Request";
 import Seo from "../Utils/Seo";
@@ -36,7 +36,7 @@ import {
   AlertIcon,
   AlertTitle,
   AlertDescription,
-  Tabs, TabList, TabPanels, Tab, TabPanel, Textarea, CloseButton
+  Tabs, TabList, TabPanels, Tab, TabPanel, Textarea, CloseButton, useColorModeValue, useColorMode
 } from "@chakra-ui/react";
 import { AiOutlineAlignLeft, AiFillBulb, AiOutlineBulb, AiOutlineWoman, AiOutlineDingding, AiOutlineVerified } from "react-icons/ai";
 import { FaCloudDownloadAlt, FaMapMarkedAlt } from "react-icons/fa";
@@ -45,7 +45,7 @@ import NavBar from "../Layouts/NavBar";
 
 import LinkMenu from "../Components/LinkMenu";
 import { FaLinkedinIn, FaGithub, FaTwitter } from "react-icons/fa";
-import { BsFillBookFill, BsFillBrushFill, BsFlower1, BsFillPatchExclamationFill, BsFillPlugFill, BsFillPencilFill, BsFillTelephoneInboundFill } from "react-icons/bs";
+import { BsFillBookFill, BsFillBrushFill, BsFlower1, BsFillPatchExclamationFill, BsFillPlugFill, BsFillPencilFill, BsFillTelephoneInboundFill, BsSunFill, BsFillMoonStarsFill } from "react-icons/bs";
 import Header from "../Components/Header";
 import AboutCard from "../Components/Card";
 import HireCard from "../Components/Card2";
@@ -61,6 +61,7 @@ import ContactCard from "../Components/Card7";
 import Input from "../Components/Input";
 import TextInput from "../Components/TextInput";
 import emailjs from "emailjs-com";
+import useOnScreen from "../hooks/useOnScreen";
 
 
 export default function Home() {
@@ -68,156 +69,207 @@ export default function Home() {
   const form = useRef();
   const [isLoading, setIsLoading] = useState(false);
 
-  const download = async ()=>{
+  const download = async () => {
     setIsLoading(true);
-       const res = await new Request().get({url:"https://jsonplaceholder.typicode.com/posts"})
-       setIsLoading(false);
-        console.log(res)
-  
+    const res = await new Request().get({ url: "https://jsonplaceholder.typicode.com/posts" })
+    setIsLoading(false);
+    console.log(res)
+
   };
 
- 
+
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [placement, setPlacement] = React.useState("left");
 
-const [Name, setName] = useState("")
-const [Email, setEmail] = useState("")
-const [Subject, setSubject] = useState("")
-const [Message, setMessage] = useState("")
-const [Success, setSuccess] = useState(false)
+  const [Name, setName] = useState("")
+  const [Email, setEmail] = useState("")
+  const [Subject, setSubject] = useState("")
+  const [Message, setMessage] = useState("")
+  const [Success, setSuccess] = useState(false)
 
 
-  const getApi = async ()=>{
-    
-     const res = await new Request().get({url:"https://jsonplaceholder.typicode.com/posts"})
-     
-     setIsLoading(false);
-     setSuccess(true)
+  const getApi = async () => {
+
+    const res = await new Request().get({ url: "https://jsonplaceholder.typicode.com/posts" })
+
+    setIsLoading(false);
+    setSuccess(true)
   }
 
-const sendEmail = (e) => {
-  setIsLoading(true);
-  e.preventDefault();
-  setName("")
-  setEmail("")
-  setSubject("")
-  setMessage("")
-  
-  emailjs.sendForm('gmail', 'template_ap6qzyl', form.current, 'pW4lu_RfjF4aAD_PY')
-  getApi()
+  const sendEmail = (e) => {
+    setIsLoading(true);
+    e.preventDefault();
+    setName("")
+    setEmail("")
+    setSubject("")
+    setMessage("")
 
-};
+    emailjs.sendForm('gmail', 'template_ap6qzyl', form.current, 'pW4lu_RfjF4aAD_PY')
+    getApi()
+
+  };
+  const [Light, setLight] = useState(false);
+
+
+  const { toggleColorMode } = useColorMode()
+
+  const bg = useColorModeValue("background", "gray.gray400")
+  const boxColor = useColorModeValue("blue.blue500", "teal")
+  const boxColorH = useColorModeValue("blue.blue300", "#044a4a")
+
+
+
+  const toggle = () => {
+    toggleColorMode()
+    setLight(!Light)
+  }
+
+  const homeRef = useRef()
+  const homeVisible = useOnScreen(homeRef)
+
+  const aboutRef = useRef()
+  const aboutVisible = useOnScreen(aboutRef)
+
+  const serviceRef = useRef()
+  const serviceVisible = useOnScreen(serviceRef)
+
+  const skillRef = useRef()
+  const skillVisible = useOnScreen(skillRef)
+
+  const educationRef = useRef()
+  const educationVisible = useOnScreen(educationRef)
+
+  const experienceRef = useRef()
+  const experienceVisible = useOnScreen(experienceRef)
+
+  const workRef = useRef()
+  const workVisible = useOnScreen(workRef)
+
+  const contactRef = useRef()
+  const contactVisible = useOnScreen(contactRef)
+
 
 
   return (
-    <MainLayout>
+    <MainLayout home={homeVisible} about={aboutVisible} service={serviceVisible} skill={skillVisible} education={educationVisible} experience={experienceVisible} work={workVisible} contact={contactVisible}>
       <Seo title="Software Engineer" description="HomePage" />
-      <Box
-        mt={"32px"}
-        display={{ base: "block", md: "none" }}
+      <HStack mt={"32px"}
+        display={{ base: "flex", md: "none" }}
         fontSize={"32px"}
-        position={"fixed"}
+        position={"sticky"}
         top={"0"}
-        bgColor={"white"}
-        opacity={"0.8"}
-      >
+        bgColor={bg}
+        opacity={"0.9"}
+        w={"100&"}
+        p="10px"
+        zIndex="22"
+        rounded="8px"
+        spacing={"90px"}
+       
+        >
         <AiOutlineAlignLeft onClick={onOpen} />
 
-        <Drawer
-          isOpen={isOpen}
-          placement={placement}
-          onClose={onClose}
-          bgColor={background}
-        >
-          <DrawerOverlay />
-          <DrawerContent>
-            <DrawerCloseButton />
-            <DrawerHeader></DrawerHeader>
-
-            <DrawerBody>
-              <Box p="14px" textAlign={"center"} fontFamily={"body"}>
-                <Center mt={"32px"}>
-                  <Wrap>
-                    <WrapItem>
-                      <Avatar
-                        size="2xl"
-                        name="Solomon Adeleke"
-                        src="avater.jpeg.png"
-                        bgColor="white"
-                      />{" "}
-                    </WrapItem>
-                  </Wrap>
-                </Center>
-                <Text mt={"28px"} fontSize={"20px"} fontFamily={"heading"}>
-                  Solomon Adeleke
-                </Text>
-                <Text mt={"3px"} fontSize={"15px"} fontFamily={"body"}>
-                  Software Engineer
-                </Text>
-
-                <Stack mt={"32px"} spacing={"15px"}>
-
-                  <span onClick={onClose}>  <LinkMenu link="#Home" title="Home" /> </span>
-                  <span onClick={onClose}>  <LinkMenu link="#About" title="About" /> </span>
-                  <span onClick={onClose}>  <LinkMenu link="#Services" title="Services" /></span>
-                  <span onClick={onClose}>  <LinkMenu link="#Skills" title="Skills" /></span>
-                  <span onClick={onClose}>  <LinkMenu link="#Education" title="Education" /> </span>
-                  <span onClick={onClose}>  <LinkMenu link="#Experience" title="Experience" /></span>
-                  <span onClick={onClose}>  <LinkMenu link="#Work" title="Work" /></span>
-                  <span onClick={onClose}>  <LinkMenu link="#Contact" title="Contact" /></span>
+        <Text>Menu</Text>
+      </HStack>
 
 
+      <Drawer
+        isOpen={isOpen}
+        placement={placement}
+        onClose={onClose}
 
-                </Stack>
+      >
+        <DrawerOverlay />
+        <DrawerContent bg={bg}>
+          <DrawerCloseButton />
+          <DrawerHeader></DrawerHeader>
 
-                <Text fontSize={"12px"} mt={"32px"}>
-                  © Copyright ©2022 All rights reserved |
-                </Text>
+          <DrawerBody>
+            <Box p="14px" textAlign={"center"} fontFamily={"body"}>
+              <Button onClick={toggle} bg="transparent" _hover={{ bg: "transparent" }} cursor={"pointer"}>{Light ? (<> Switch to Dark mode  <BsSunFill /></>) : (<> Switch to Light mode  <BsFillMoonStarsFill /></>)}</Button>
 
-                <Text fontSize={"12px"} mt={"12px"}>
-                  This Portfolio is made with{" "}
-                  <i className="fa-solid fa-heart" /> by{" "}
-                  <Box as={"span"} color={"red.red500"}>
-                    solomonleke
-                  </Box>
-                </Text>
+              <Center mt={"32px"}>
+                <Wrap>
+                  <WrapItem>
+                    <Avatar
+                      size="2xl"
+                      name="Solomon Adeleke"
+                      src="avater.jpeg.png"
+                      bgColor="white"
+                    />{" "}
+                  </WrapItem>
+                </Wrap>
+              </Center>
+              <Text mt={"28px"} fontSize={"20px"} fontFamily={"heading"}>
+                Solomon Adeleke
+              </Text>
+              <Text mt={"3px"} fontSize={"15px"} fontFamily={"body"}>
+                Software Engineer
+              </Text>
 
-                <Center mt={"12px"} pb={"62px"}>
-                  <HStack spacing={"12px"} cursor={"pointer"}>
-                    <LinkBox
-                      as={"a"}
-                      href="https://www.linkedin.com/in/solomon-adeleke-740426170/"
-                      target={"blank"}
-                    >
+              <Stack mt={"32px"} spacing={"15px"}>
 
-                      <FaLinkedinIn />
-                    </LinkBox>
-                    <LinkBox
-                      as={"a"}
-                      href="https://github.com/solomonleke"
-                      target={"blank"}
-                    >
+                <span onClick={onClose}>  <LinkMenu link="#Home" title="Home" /> </span>
+                <span onClick={onClose}>  <LinkMenu link="#About" title="About" /> </span>
+                <span onClick={onClose}>  <LinkMenu link="#Services" title="Services" /></span>
+                <span onClick={onClose}>  <LinkMenu link="#Skills" title="Skills" /></span>
+                <span onClick={onClose}>  <LinkMenu link="#Education" title="Education" /> </span>
+                <span onClick={onClose}>  <LinkMenu link="#Experience" title="Experience" /></span>
+                <span onClick={onClose}>  <LinkMenu link="#Work" title="Work" /></span>
+                <span onClick={onClose}>  <LinkMenu link="#Contact" title="Contact" /></span>
 
-                      <FaGithub />
-                    </LinkBox>
-                    <LinkBox
-                      as={"a"}
-                      href="https://twitter.com/moyin_s"
-                      target={"blank"}
-                    >
-                      <FaTwitter />
-                    </LinkBox>
-                  </HStack>
-                </Center>
-              </Box>
-            </DrawerBody>
 
-            <DrawerFooter>
-            </DrawerFooter>
-          </DrawerContent>
-        </Drawer>
-      </Box>
-      <Container as={"section"} maxW={"container.lg"} id={"Home"} pt={"50px"} mt={{ base: "10px" }} h={{ base: "auto", md: "100vh" }}>
+
+              </Stack>
+
+              <Text fontSize={"12px"} mt={"32px"}>
+                © Copyright ©2022 All rights reserved |
+              </Text>
+
+              <Text fontSize={"12px"} mt={"12px"}>
+                This Portfolio is made with{" "}
+                <i className="fa-solid fa-heart" /> by{" "}
+                <Box as={"span"} color={"blue.blue500"}>
+                  solomonleke
+                </Box>
+              </Text>
+
+              <Center mt={"12px"} pb={"62px"}>
+                <HStack spacing={"12px"} cursor={"pointer"}>
+                  <LinkBox
+                    as={"a"}
+                    href="https://www.linkedin.com/in/solomon-adeleke-740426170/"
+                    target={"blank"}
+                  >
+
+                    <FaLinkedinIn />
+                  </LinkBox>
+                  <LinkBox
+                    as={"a"}
+                    href="https://github.com/solomonleke"
+                    target={"blank"}
+                  >
+
+                    <FaGithub />
+                  </LinkBox>
+                  <LinkBox
+                    as={"a"}
+                    href="https://twitter.com/moyin_s"
+                    target={"blank"}
+                  >
+                    <FaTwitter />
+                  </LinkBox>
+                </HStack>
+              </Center>
+            </Box>
+          </DrawerBody>
+
+          <DrawerFooter>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+
+      <Container ref={homeRef} as={"section"} maxW={"container.lg"} id={"Home"} pt={"50px"} mt={{ base: "10px" }} h={{ base: "auto", md: "100vh" }}>
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={"12px"}>
 
 
@@ -248,17 +300,17 @@ const sendEmail = (e) => {
 
 
           <Fade right duration={3000}>
-          
-          <Box pos="relative">
-          <Image w={{ base: "100%", md: "90%" }} src="about.png" />
-            <Image w={{ base: "100%", md: "60%" }} pos={"absolute"} display={{base: "none",  md: "block"}} top="0" left="190px" zIndex="-1" src="circle-sEnd.png" />
+
+            <Box pos="relative">
+              <Image w={{ base: "100%", md: "90%" }} src="about.png" />
+              <Image w={{ base: "100%", md: "60%" }} pos={"absolute"} display={{ base: "none", md: "block" }} top="0" left="190px" zIndex="-1" src="circle-sEnd.png" />
             </Box>
           </Fade>
 
         </SimpleGrid>
       </Container>
 
-      <Container as={"section"} maxW={"container.lg"} id={"About"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
+      <Container ref={aboutRef} as={"section"} maxW={"container.lg"} id={"About"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
         <Header title="about us" head="who am i ?" />
         <Slide right duration={2000}>
           <Text mt={"72px"}>
@@ -289,7 +341,7 @@ const sendEmail = (e) => {
 
 
 
-      <Container as={"section"} maxW={"container.lg"} id={"Services"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
+      <Container as={"section"} maxW={"container.lg"} ref={serviceRef} id={"Services"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
         <Header title="WHAT I DO?" head="How i work" />
 
 
@@ -344,7 +396,7 @@ const sendEmail = (e) => {
 
       </Container>
 
-      <Container as={"section"} maxW={"container.lg"} id={"Skills"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
+      <Container as={"section"} maxW={"container.lg"} ref={skillRef} id={"Skills"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
         <Header title="MY SPECIALTY" head="MY SKILLS" />
 
         <Text mt={"72px"}>Over the last 3 years, I've been able to acquaint myself with this following skills,
@@ -356,14 +408,12 @@ const sendEmail = (e) => {
             <Text fontWeight={"700"} fontSize={"16px"}>Soft Skills/Computer Aid Design Skills</Text>
 
             <Box mt={"32px"}>
-              <ProgressBar title="Research" color={"red"} level={"70"} />
+              <ProgressBar title="Research" color={"blue"} level={"88"} />
               <ProgressBar title="Negotiation" color={"teal"} level={"80"} />
               <ProgressBar title="Communication" color={"blue"} level={"90"} />
-              <ProgressBar title="Microsoft Office" color={"yellow"} level={"60"} />
-              <ProgressBar title="Adobe Photo-shop" color={"red"} level={"50"} />
+              <ProgressBar title="Microsoft Office" color={"yellow"} level={"70"} />
+              <ProgressBar title="Adobe Photo-shop" color={"teal"} level={"65"} />
               <ProgressBar title="WordPress" color={"blue"} level={"90"} />
-              <ProgressBar title="Corel Draw" color={"red"} level={"50"} />
-              <ProgressBar title="Adobe illustrator" color={"red"} level={"50"} />
 
             </Box>
 
@@ -376,11 +426,10 @@ const sendEmail = (e) => {
               <ProgressBar title="HTML5" color={"telegram"} level={"97"} />
               <ProgressBar title="CSS3" color={"teal"} level={"87"} />
               <ProgressBar title="JavaScript" color={"teal"} level={"77"} />
-              <ProgressBar title="TypeScript" color={"red"} level={"57"} />
               <ProgressBar title="PHP" color={"teal"} level={"80"} />
               <ProgressBar title="Laravel" color={"teal"} level={"85"} />
               <ProgressBar title="React.js" color={"teal"} level={"80"} />
-              <ProgressBar title="Next.js" color={"yellow"} level={"60"} />
+
             </Box>
           </Box>
 
@@ -389,7 +438,7 @@ const sendEmail = (e) => {
       </Container>
 
 
-      <Container as={"section"} maxW={"container.lg"} id={"Education"} pt={"50px"} h={{ base: "auto", md: "100vh" }}>
+      <Container as={"section"} maxW={"container.lg"} ref={educationRef} id={"Education"} pt={"50px"} h={{ base: "auto", md: "100vh" }}>
         <Header title="Education" head="Education" />
 
         <Accordion mt={"72px"} allowMultiple>
@@ -406,7 +455,7 @@ const sendEmail = (e) => {
         </Accordion>
       </Container>
 
-      <Container as={"section"} maxW={"container.lg"} id={"Experience"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
+      <Container as={"section"} maxW={"container.lg"} ref={experienceRef} id={"Experience"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
         <Header title="Experience" head="Work Experience" />
 
         <Box mt={"72px"}>
@@ -450,7 +499,7 @@ const sendEmail = (e) => {
         </Box>
       </Container>
 
-      <Container as={"section"} maxW={"container.lg"} id={"Work"} pt={"50px"} h={{ base: "auto", md: "autoa" }}>
+      <Container as={"section"} maxW={"container.lg"} ref={workRef} id={"Work"} pt={"50px"} h={{ base: "auto", md: "autoa" }}>
         <Header title="my work" head="recent work" />
 
         <Tabs mt="72px">
@@ -588,53 +637,53 @@ const sendEmail = (e) => {
       </Container>
 
 
-      <Container as={"section"} maxW={"container.lg"} id={"Contact"} pt={"50px"} h={{ base: "auto", md: "100vh" }}>
+      <Container as={"section"} maxW={"container.lg"} ref={contactRef} id={"Contact"} pt={"50px"} h={{ base: "auto", md: "100vh" }}>
         <Header title="Get in touch" head="contact" />
         <Box mt="72px">
           {
             Success ? (
               <Slide right duration={3000}>
-              <Alert status='success' mb="15px" color="white" bg="teal">
-              <AlertIcon />
-              <AlertTitle mr={2}>Thank you for reaching out!</AlertTitle>
-              <AlertDescription>A message will be sent to you shortly.</AlertDescription>
-              <CloseButton onClick={()=>setSuccess(false)} position='absolute' right='8px' top='8px' />
-            </Alert> 
+                <Alert status='success' mb="15px" color="white" bg="teal">
+                  <AlertIcon />
+                  <AlertTitle mr={2}>Thank you for reaching out!</AlertTitle>
+                  <AlertDescription>A message will be sent to you shortly.</AlertDescription>
+                  <CloseButton onClick={() => setSuccess(false)} position='absolute' right='8px' top='8px' />
+                </Alert>
               </Slide>
-             
-            ):("")
+
+            ) : ("")
           }
           <SimpleGrid columns={{ base: 1, md: 2 }} method="post">
             <Box>
-              <ContactCard icon={<MdOutgoingMail/>} title="lordsoliz@gmail.com" />
-              <ContactCard icon={<FaMapMarkedAlt/>} title={`No 1, Johnson Sami-iye Street, Lagos, Nigeria.`} />
-              <ContactCard icon={<BsFillTelephoneInboundFill/>} title="+23460888922" />
+              <ContactCard icon={<MdOutgoingMail />} title="lordsoliz@gmail.com" />
+              <ContactCard icon={<FaMapMarkedAlt />} title={`No 1, Johnson Sami-iye Street, Lagos, Nigeria.`} />
+              <ContactCard icon={<BsFillTelephoneInboundFill />} title="+23460888922" />
             </Box>
             <form ref={form} onSubmit={sendEmail}>
-            <Stack spacing="27px">
-            <Jump duration={2000}>
-            <Input name="Name" val={Name && true} onChange={(e)=>setName(e.target.value)} placeholder="Name" value={Name} label="Name"  type= "text" />
-            </Jump>
-            <Jump  duration={2000}>
-            <Input name="Email" val={Email && true} onChange={(e)=>setEmail(e.target.value)} placeholder="Email" value={Email} label="Email"  type= "text" />
-            </Jump>
-            <Jump  duration={2000}>
-            <Input  name="Subject"  val={Subject && true} onChange={(e)=>setSubject(e.target.value)} placeholder="Subject" value={Subject} label="Subject"  type= "text" />
+              <Stack spacing="27px">
+                <Jump duration={2000}>
+                  <Input name="Name" val={Name && true} onChange={(e) => setName(e.target.value)} placeholder="Name" value={Name} label="Name" type="text" />
+                </Jump>
+                <Jump duration={2000}>
+                  <Input name="Email" val={Email && true} onChange={(e) => setEmail(e.target.value)} placeholder="Email" value={Email} label="Email" type="text" />
+                </Jump>
+                <Jump duration={2000}>
+                  <Input name="Subject" val={Subject && true} onChange={(e) => setSubject(e.target.value)} placeholder="Subject" value={Subject} label="Subject" type="text" />
 
-            </Jump>
-            <Jump  duration={2000}>
-            <TextInput  name="Message"  val={Message && true} onChange={(e)=>setMessage(e.target.value)} placeholder="Message" value={Message} label="Message" />
+                </Jump>
+                <Jump duration={2000}>
+                  <TextInput name="Message" val={Message && true} onChange={(e) => setMessage(e.target.value)} placeholder="Message" value={Message} label="Message" />
 
-            </Jump>
-            
-            <Button type="submit"  loadingText="Sending Mail. . ."  isLoading={isLoading} _hover={{bgColor: "blue.blue300", color: "#fff"}}  color="white" bgColor="blue.blue500">Send Message</Button>
-            </Stack>
+                </Jump>
+
+                <Button type="submit" loadingText="Sending Mail. . ." isLoading={isLoading} _hover={{ bgColor: boxColorH, color: "#fff" }} color="white" bgColor={boxColor}>Send Message</Button>
+              </Stack>
             </form>
-           
-            
+
+
           </SimpleGrid>
 
-         
+
         </Box>
 
       </Container>
