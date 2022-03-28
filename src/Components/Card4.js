@@ -34,7 +34,7 @@ import {
   import { AiOutlineMinus,AiOutlinePlus } from "react-icons/ai";
 import { Fade } from 'react-reveal';
 
-export default function EducationCard({title,description}) {
+export default function EducationCard({title,description, date, img}) {
   return (
     <Fade bottom duration={2000}>
     <AccordionItem my={"10px"}>
@@ -52,7 +52,19 @@ export default function EducationCard({title,description}) {
               </AccordionButton>
             </h2>
             <AccordionPanel pb={4}>
-             {description}
+            <HStack flexWrap={"wrap"} flexDirection={{base: "column", md: "row"}}>
+                  <Text textAlign={{base: "center", md: "left"}}> {description}</Text>
+                  <Spacer/>
+                  <Text textTransform={"uppercase"} fontWeight={"700"}>{date}</Text>
+            </HStack>
+
+            <Center mt={"12px"}>
+            {
+              img && (  <Image src={`${img}`} />)
+            }
+                
+            </Center>
+            
             </AccordionPanel>
             </div>
     )}

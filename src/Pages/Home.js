@@ -12,7 +12,6 @@ import {
   Image,
   LinkBox,
   SimpleGrid,
-  Spacer,
   Stack,
   Text,
   Wrap,
@@ -28,10 +27,6 @@ import {
   background,
   Progress,
   Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
   Alert,
   AlertIcon,
   AlertTitle,
@@ -161,10 +156,11 @@ export default function Home() {
         bgColor={bg}
         opacity={"0.9"}
         w={"100&"}
-        p="10px"
+        p="5px"
         zIndex="22"
         rounded="8px"
-        spacing={"90px"}
+        spacing={"105px"}
+        fontSize={"25px"}
        
         >
         <AiOutlineAlignLeft onClick={onOpen} />
@@ -186,7 +182,7 @@ export default function Home() {
 
           <DrawerBody>
             <Box p="14px" textAlign={"center"} fontFamily={"body"}>
-              <Button onClick={toggle} bg="transparent" _hover={{ bg: "transparent" }} cursor={"pointer"}>{Light ? (<> Switch to Dark mode  <BsSunFill /></>) : (<> Switch to Light mode  <BsFillMoonStarsFill /></>)}</Button>
+            <Button onClick={toggle} bg="transparent" _hover={{ bg: "transparent" }} cursor={"pointer"}>{Light == false ? (<> Switch to Dark mode <Text px="10px"><BsFillMoonStarsFill /> </Text></>) : (<> Switch to Light mode <Text px="10px"><BsSunFill /></Text>  </>)}</Button>
 
               <Center mt={"32px"}>
                 <Wrap>
@@ -311,7 +307,7 @@ export default function Home() {
       </Container>
 
       <Container ref={aboutRef} as={"section"} maxW={"container.lg"} id={"About"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
-        <Header title="about us" head="who am i ?" />
+        <Header title="about me" head="Get to Know me" />
         <Slide right duration={2000}>
           <Text mt={"72px"}>
             I'm a Software Engineer who lives by this code of perfection and simplicity, I strive to make sure that all my pieces of design get the response
@@ -438,21 +434,25 @@ export default function Home() {
       </Container>
 
 
-      <Container as={"section"} maxW={"container.lg"} ref={educationRef} id={"Education"} pt={"50px"} h={{ base: "auto", md: "100vh" }}>
-        <Header title="Education" head="Education" />
+      <Container as={"section"} maxW={"container.lg"} ref={educationRef} id={"Education"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
+        <Header title="Education / Certification" head="Education" />
 
-        <Accordion mt={"72px"} allowMultiple>
+        <Accordion my={"72px"}  allowMultiple>
 
-          <EducationCard title="Bachelor Degree of Chemistry" description=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat." />
-          <EducationCard title="Higher school Secondary education" description=" Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat." />
+          <EducationCard title="Bachelor Degree of Chemistry" description=" Covenant University, Ogun State. Nigeria." date="Aug 2014 - Jul 2019"  />
+          <EducationCard title="Higher school Secondary education" description=" Altitude College, Lagos State. Nigeria." date="Sep 2007 - Jul 2013"  />
 
         </Accordion>
+
+        <Header head="Certification" />
+
+        <Accordion my={"72px"} mb="210px"  allowMultiple>
+
+        <EducationCard title="Designated JavaScript Specialist" description="Framework Academy. 1333 H St NW Suite 700 West Washington." date="14 Feb, 2022" img="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/46356459" />
+        <EducationCard title="Designated HTML5 Specialist" description="Framework Academy. 1333 H St NW Suite 700 West Washington." date="17 may, 2021"  img="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/32548136"  />
+        <EducationCard title="Designated CSS Specialist" description="Framework Academy. 1333 H St NW Suite 700 West Washington." date="17 may, 2021"  img="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/32548176"  />
+
+      </Accordion>
       </Container>
 
       <Container as={"section"} maxW={"container.lg"} ref={experienceRef} id={"Experience"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
@@ -660,23 +660,23 @@ export default function Home() {
               <ContactCard icon={<BsFillTelephoneInboundFill />} title="+23460888922" />
             </Box>
             <form ref={form} onSubmit={sendEmail}>
-              <Stack spacing="27px">
+              <Stack spacing="27px" mb="20px">
                 <Jump duration={2000}>
-                  <Input name="Name" val={Name && true} onChange={(e) => setName(e.target.value)} placeholder="Name" value={Name} label="Name" type="text" />
+                  <Input isRequired={true} name="Name" val={Name && true} onChange={(e) => setName(e.target.value)} placeholder="Name" value={Name} label="Name" type="text" />
                 </Jump>
                 <Jump duration={2000}>
-                  <Input name="Email" val={Email && true} onChange={(e) => setEmail(e.target.value)} placeholder="Email" value={Email} label="Email" type="text" />
+                  <Input isRequired={true} name="Email" val={Email && true} onChange={(e) => setEmail(e.target.value)} placeholder="Email" value={Email} label="Email" type="text" />
                 </Jump>
                 <Jump duration={2000}>
-                  <Input name="Subject" val={Subject && true} onChange={(e) => setSubject(e.target.value)} placeholder="Subject" value={Subject} label="Subject" type="text" />
+                  <Input isRequired={true} name="Subject" val={Subject && true} onChange={(e) => setSubject(e.target.value)} placeholder="Subject" value={Subject} label="Subject" type="text" />
 
                 </Jump>
                 <Jump duration={2000}>
-                  <TextInput name="Message" val={Message && true} onChange={(e) => setMessage(e.target.value)} placeholder="Message" value={Message} label="Message" />
+                  <TextInput isRequired={true} name="Message" val={Message && true} onChange={(e) => setMessage(e.target.value)} placeholder="Message" value={Message} label="Message" />
 
                 </Jump>
 
-                <Button type="submit" loadingText="Sending Mail. . ." isLoading={isLoading} _hover={{ bgColor: boxColorH, color: "#fff" }} color="white" bgColor={boxColor}>Send Message</Button>
+                <Button  type="submit" loadingText="Sending Mail. . ." isLoading={isLoading} _hover={{ bgColor: boxColorH, color: "#fff" }} color="white" bgColor={boxColor}>Send Message</Button>
               </Stack>
             </form>
 

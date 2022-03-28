@@ -6,7 +6,7 @@ import { AiOutlineRise } from "react-icons/ai";
 import { Fade } from 'react-reveal';
 export default function WorkCard({ title, description, link, image }) {
 
-    const boxColor = useColorModeValue("#teal", "#606060")
+    const boxColor = useColorModeValue("teal", "#606060")
     return (
 
         <Fade right duration={2500}>

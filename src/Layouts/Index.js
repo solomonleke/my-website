@@ -16,7 +16,7 @@ import {
 
 export default function MainLayout({children, home=false, about=false, service=false, skill=false, education=false, experience=false, work=false, contact=false, bgColor = "white"}) {
   return (
-    <Container maxW={"container.xl"} scrollBehavior="smooth">
+    <Container maxW={"container.xl"}>
     <HStack align={"flex-start"} pos={"relative"}  display={{base: "none", md: "none", lg: "block"}}>
     <Box>
     <NavBar home={home} about={about} service={service} skill={skill} education={education} experience={experience} work={work} contact={contact} />

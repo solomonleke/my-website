@@ -38,7 +38,7 @@ export default function NavBar({ home = false, about=false, service=false, skill
   return (
 
     <Box bgColor={bg} p="14px" w="300px" textAlign={"center"} overflowY={"scroll"} pos={"fixed"} fontFamily={"body"} h={"100vh"} >
-      <Button onClick={toggle} bg="transparent" _hover={{ bg: "transparent" }} cursor={"pointer"}>{Light ? (<> Switch to Dark mode  <BsSunFill /></>) : (<> Switch to Light mode  <BsFillMoonStarsFill /></>)}</Button>
+      <Button onClick={toggle} bg="transparent" _hover={{ bg: "transparent" }} cursor={"pointer"}>{Light == false ? (<> Switch to Dark mode <Text px="10px"><BsFillMoonStarsFill /> </Text></>) : (<> Switch to Light mode <Text px="10px"><BsSunFill /></Text>  </>)}</Button>
       <Center mt={"32px"}>
         <Wrap>
           <WrapItem>

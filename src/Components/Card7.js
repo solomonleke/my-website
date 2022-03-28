@@ -39,7 +39,7 @@ export default function ContactCard({icon, title}) {
   const iconColor = useColorModeValue( "blue.blue500" , "white")
   return (
     <Fade bottom duration={3000}>
-    <HStack spacing="30px" mb="20px">
+    <SimpleGrid columns={{base: 2, md: 2}} maxW="sm" alignItems={"center"} spacing="0px" mb="20px">
     <Box w="100px" h="100px" bgColor={boxColor}>
         <Center color={iconColor} fontSize="30px" mt="35px">
            {icon}
@@ -47,7 +47,7 @@ export default function ContactCard({icon, title}) {
     </Box>
 
     <Text  color={iconColor} fontSize={"15px"}>{title}</Text>
-  </HStack>
+  </SimpleGrid>
     </Fade>
    
   )
