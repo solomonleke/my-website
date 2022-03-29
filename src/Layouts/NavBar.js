@@ -63,7 +63,7 @@ export default function NavBar({ home = false, about=false, service=false, skill
         <LinkMenu active={work} link="#Work" title="Work" />
         <LinkMenu active={contact} link="#Contact" title="Contact" />
 
-      </Stack>
+      </Stack>  
 
       <Text fontSize={"12px"} mt={"32px"}>© Copyright ©2022 All rights reserved |</Text>
 

@@ -51,7 +51,12 @@ export default function ExperienceCard({title,description, color, icon, date}) {
     </Box>
     <Fade right duration={2500}>
     <Box w="100%" bg={borderColor} p="25px">
-      <Text fontWeight={"700"} fontSize="20px">{title} <Box pl={"5px"} fontWeight={"bold"} fontSize="16px" color={dateT} as="span">{date}</Box></Text>
+    <HStack flexWrap={"wrap"} textAlign={{base: "center", md: "left"}} flexDirection={{base: "column", md: "row"}}>
+    <Text fontWeight={"700"} fontSize="20px">{title}</Text>
+    <Spacer/>
+    <Text pl={"5px"}  fontWeight={"bold"} fontSize="16px" color={dateT} as="span">{date}</Text>
+    </HStack>
+
       <Text mt={"30px"}>{description}
       </Text>
     </Box>

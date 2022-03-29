@@ -14,29 +14,30 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-export default function MainLayout({children, home=false, about=false, service=false, skill=false, education=false, experience=false, work=false, contact=false, bgColor = "white"}) {
+export default function MainLayout({ children, home = false, about = false, service = false, skill = false, education = false, experience = false, work = false, contact = false, bgColor = "white" }) {
   return (
     <Container maxW={"container.xl"}>
-    <HStack align={"flex-start"} pos={"relative"}  display={{base: "none", md: "none", lg: "block"}}>
-    <Box>
-    <NavBar home={home} about={about} service={service} skill={skill} education={education} experience={experience} work={work} contact={contact} />
-    </Box>
-  
+      <Stack align={"flex-start"} pos={"relative"} direction={{base: "columns", md: "columns", lg: "row"}} justifyContent={'center'} >
 
-    <Box pl={{base: "0", md:"320px"}} w={"100%"}>
-   
-    {children}
-    </Box>
-       
-   
-</HStack>
+        <Box visibility={{ base: "hidden", md: "hidden", lg: "visible" }}  >
+          <NavBar home={home} about={about} service={service} skill={skill} education={education} experience={experience} work={work} contact={contact} />
+        </Box>
 
-  <Box pl={{base: "0", md:"320px"}} w={"100%"}  display={{base: "block", md: "block", lg: "none"}}>
-    
-  {children}
-  </Box>
-    
+
+        <Box pl={{ base: "0px", md: "320px" }} width={'100%'}>
+
+          {children}
+        </Box>
+
+
+
+
+
+      </Stack>
+
+
+
     </Container>
-  
+
   )
 }

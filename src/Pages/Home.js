@@ -161,8 +161,8 @@ export default function Home() {
         rounded="8px"
         spacing={"105px"}
         fontSize={"25px"}
-       
-        >
+
+      >
         <AiOutlineAlignLeft onClick={onOpen} />
 
         <Text>Menu</Text>
@@ -182,7 +182,7 @@ export default function Home() {
 
           <DrawerBody>
             <Box p="14px" textAlign={"center"} fontFamily={"body"}>
-            <Button onClick={toggle} bg="transparent" _hover={{ bg: "transparent" }} cursor={"pointer"}>{Light == false ? (<> Switch to Dark mode <Text px="10px"><BsFillMoonStarsFill /> </Text></>) : (<> Switch to Light mode <Text px="10px"><BsSunFill /></Text>  </>)}</Button>
+              <Button onClick={toggle} bg="transparent" _hover={{ bg: "transparent" }} cursor={"pointer"}>{Light == false ? (<> Switch to Dark mode <Text px="10px"><BsFillMoonStarsFill /> </Text></>) : (<> Switch to Light mode <Text px="10px"><BsSunFill /></Text>  </>)}</Button>
 
               <Center mt={"32px"}>
                 <Wrap>
@@ -289,7 +289,7 @@ export default function Home() {
                 color="red.red400"
                 variant="outline"
               >
-                <Text as="a" href="https://drive.google.com/u/0/uc?id=1Yd38AII3GNx5FJB9dwLtZ3dQTDPLBpyS&export=download">Download CV</Text>
+                <Text as="a" href="https://drive.google.com/uc?id=1wWDhBXNhupG03PwlKWP4lHcy783P1wgG&export=download">Download CV</Text>
               </Button>
             </Slide>
           </Box>
@@ -392,13 +392,13 @@ export default function Home() {
 
       </Container>
 
-      <Container as={"section"} maxW={"container.lg"} ref={skillRef} id={"Skills"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
+      <Container as={"section"} maxW={"container.lg"} ref={skillRef} id={"Skills"} pt={"50px"} h={{ base: "auto", md: "100vh" }}>
         <Header title="MY SPECIALTY" head="MY SKILLS" />
 
-        <Text mt={"72px"}>Over the last 3 years, I've been able to acquaint myself with this following skills,
-          and I have used them to developer live/existing projects for clients all over the world that are happy clients today</Text>
+        <Text mt={"72px"}>I've been able to acquaint myself with the following technologies in the past 3 years,
+          and used them to develop live/existing projects that meet clients demands.</Text>
 
-        <SimpleGrid columns={{ base: 1, md: 2 }} mt="32px" spacing={"30px"} >
+        <SimpleGrid columns={{ base: 1, md: 2 }} mt="32px"  spacing={"30px"} >
 
           <Box>
             <Text fontWeight={"700"} fontSize={"16px"}>Soft Skills/Computer Aid Design Skills</Text>
@@ -418,7 +418,7 @@ export default function Home() {
           <Box>
             <Text fontWeight={"700"} fontSize={"16px"}>Computer Programming Skills</Text>
 
-            <Box mt={"32px"}>
+            <Box mt={"32px"} >
               <ProgressBar title="HTML5" color={"telegram"} level={"97"} />
               <ProgressBar title="CSS3" color={"teal"} level={"87"} />
               <ProgressBar title="JavaScript" color={"teal"} level={"77"} />
@@ -437,22 +437,22 @@ export default function Home() {
       <Container as={"section"} maxW={"container.lg"} ref={educationRef} id={"Education"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
         <Header title="Education / Certification" head="Education" />
 
-        <Accordion my={"72px"}  allowMultiple>
+        <Accordion my={"72px"} allowMultiple>
 
-          <EducationCard title="Bachelor Degree of Chemistry" description=" Covenant University, Ogun State. Nigeria." date="Aug 2014 - Jul 2019"  />
-          <EducationCard title="Higher school Secondary education" description=" Altitude College, Lagos State. Nigeria." date="Sep 2007 - Jul 2013"  />
+          <EducationCard title="Bachelor Degree of Chemistry" description=" Covenant University, Ogun State. Nigeria." date="Aug 2014 - Jul 2019" />
+          <EducationCard title="Higher school Secondary education" description=" Altitude College, Lagos State. Nigeria." date="Sep 2007 - Jul 2013" />
 
         </Accordion>
 
         <Header head="Certification" />
 
-        <Accordion my={"72px"} mb="210px"  allowMultiple>
+        <Accordion my={"72px"} mb="210px" allowMultiple>
 
-        <EducationCard title="Designated JavaScript Specialist" description="Framework Academy. 1333 H St NW Suite 700 West Washington." date="14 Feb, 2022" img="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/46356459" />
-        <EducationCard title="Designated HTML5 Specialist" description="Framework Academy. 1333 H St NW Suite 700 West Washington." date="17 may, 2021"  img="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/32548136"  />
-        <EducationCard title="Designated CSS Specialist" description="Framework Academy. 1333 H St NW Suite 700 West Washington." date="17 may, 2021"  img="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/32548176"  />
+          <EducationCard title="Designated JavaScript Specialist" description="Framework Academy. 1333 H St NW Suite 700 West Washington." date="14 Feb, 2022" img="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/46356459" />
+          <EducationCard title="Designated HTML5 Specialist" description="Framework Academy. 1333 H St NW Suite 700 West Washington." date="17 may, 2021" img="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/32548136" />
+          <EducationCard title="Designated CSS Specialist" description="Framework Academy. 1333 H St NW Suite 700 West Washington." date="17 may, 2021" img="https://api.accredible.com/v1/frontend/credential_website_embed_image/certificate/32548176" />
 
-      </Accordion>
+        </Accordion>
       </Container>
 
       <Container as={"section"} maxW={"container.lg"} ref={experienceRef} id={"Experience"} pt={"50px"} h={{ base: "auto", md: "auto" }}>
@@ -461,29 +461,29 @@ export default function Home() {
         <Box mt={"72px"}>
 
           <ExperienceCard
-            title="Senior Developer at ItSkillsCenter"
+            title="Full-stack Developer at ItSkillsCenter"
             date="OCT 2021 - Present"
-            description="Tolerably earnestly middleton extremely distrusts she boy now not.
-          Add and offered prepare how cordial two promise. Greatly who affixed suppose
-          but enquire compact prepare all put. Added forth chief trees but rooms think may."
+            description="I design, develop and deploy high-quality solutions and algorithms that will be used across multiple ItSkillsCenter products and used by hundreds of users.
+            Contribute to driving best engineering practices such as Continuous Integration/Continuous Delivery, Test- Driven Development, behavioral driven development,
+             Work towards reducing the complexity that comes with working with a system that spans the ItSkillCenter Network.
+           I collaborated effectively with other development teams to help drive forward ItSkillCenter products."
             icon={<BsFillPencilFill />}
             color="#2c98f0"
           />
           <ExperienceCard
             title="Front-end Designer at Gahawards"
             date="JUN 2021 – SEP 2021"
-            description="Tolerably earnestly middleton extremely distrusts she boy now not.
-          Add and offered prepare how cordial two promise. Greatly who affixed suppose
-          but enquire compact prepare all put. Added forth chief trees but rooms think may."
+            description="I was responsible for participating in the full life cycle of Gahawards development projects, and for implementation and 
+            maintaining best practice procedures in all areas of work. Liaised with team members to deliver quality products,
+            designed and updated layouts to meet usability and performance requirements. "
             icon={<BsFillPencilFill />}
             color="orange"
           />
           <ExperienceCard
             title="Front-end Developer at Pc District"
             date="NOV 2020 – MAR 2021"
-            description="Tolerably earnestly middleton extremely distrusts she boy now not.
-          Add and offered prepare how cordial two promise. Greatly who affixed suppose
-          but enquire compact prepare all put. Added forth chief trees but rooms think may."
+            description="I designed web platforms that were responsive on all screens, revamped existing application to function better and faster,
+             and collaborated effectively with other development teams to help drive forward Pc District products."
             icon={<BsFillPencilFill />}
             color="teal"
           />
@@ -676,7 +676,7 @@ export default function Home() {
 
                 </Jump>
 
-                <Button  type="submit" loadingText="Sending Mail. . ." isLoading={isLoading} _hover={{ bgColor: boxColorH, color: "#fff" }} color="white" bgColor={boxColor}>Send Message</Button>
+                <Button type="submit" loadingText="Sending Mail. . ." isLoading={isLoading} _hover={{ bgColor: boxColorH, color: "#fff" }} color="white" bgColor={boxColor}>Send Message</Button>
               </Stack>
             </form>
 
