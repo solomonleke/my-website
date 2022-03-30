@@ -657,7 +657,7 @@ export default function Home() {
             <Box>
               <ContactCard icon={<MdOutgoingMail />} title="lordsoliz@gmail.com" />
               <ContactCard icon={<FaMapMarkedAlt />} title={`No 1, Johnson Sami-iye Street, Lagos, Nigeria.`} />
-              <ContactCard icon={<BsFillTelephoneInboundFill />} title="+23460888922" />
+              <ContactCard icon={<BsFillTelephoneInboundFill />} title="+2348160888922" />
             </Box>
             <form ref={form} onSubmit={sendEmail}>
               <Stack spacing="27px" mb="20px">
